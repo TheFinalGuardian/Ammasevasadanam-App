@@ -16,10 +16,23 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        body: const Column(
           children: [
-            Text("To the ")
+            Text(
+                """    This application is meant to be used for logging expenses and donations. Admins will be able to see statistics using a password. """),
+            Text("To navigate between pages:"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text("SWIPE RIGHT"),
+                    
+                  ],
+                )
+              ],
+            ),
           ],
         ));
   }
