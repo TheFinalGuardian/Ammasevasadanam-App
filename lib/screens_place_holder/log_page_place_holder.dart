@@ -1,8 +1,8 @@
 import 'package:ammasevasadanam_app/menu_bottom.dart';
 import 'package:flutter/material.dart';
 
-class LogPage extends StatelessWidget {
-  const LogPage({super.key});
+class LogPagePlaceHolder extends StatelessWidget {
+  const LogPagePlaceHolder({super.key});
 
   @override
   Widget build(BuildContext context) {

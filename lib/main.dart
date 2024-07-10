@@ -1,4 +1,6 @@
 import 'package:ammasevasadanam_app/home_page.dart';
+import 'package:ammasevasadanam_app/screens_place_holder/log_page_place_holder.dart';
+import 'package:ammasevasadanam_app/screens_place_holder/report_page_place_holder.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,8 +12,13 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage()
+    return MaterialApp(
+      home: HomePage(),
+      routes: {
+        "/log": (context) => LogPagePlaceHolder(),
+        "/home": (context) => HomePage(),
+        "/report": (context) => ReportPagePlaceHolder(),
+      },
     );
   }
 }

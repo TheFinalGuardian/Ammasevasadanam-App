@@ -1,3 +1,4 @@
+import 'package:ammasevasadanam_app/menu_bottom.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -28,12 +29,14 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text("SWIPE RIGHT"),
-                    
+
                   ],
                 )
               ],
             ),
           ],
-        ));
+        ),
+        bottomNavigationBar: const MenuBottom(),
+        );
   }
 }
