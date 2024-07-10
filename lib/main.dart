@@ -1,9 +1,9 @@
 
 import 'package:ammasevasadanam_app/home_page.dart';
 //Delete before commit
-import 'package:ammasevasadanam_app/screens/home_page_place_holder.dart';
-import 'package:ammasevasadanam_app/screens/log_page.dart';
-import 'package:ammasevasadanam_app/screens/report_page.dart';
+import 'package:ammasevasadanam_app/screens_place_holder/home_page_place_holder.dart';
+import 'package:ammasevasadanam_app/screens_place_holder/log_page_place_holder.dart';
+import 'package:ammasevasadanam_app/screens_place_holder/report_page_place_holder.dart';
 //
 import 'package:flutter/material.dart';
 
@@ -19,9 +19,9 @@ class App extends StatelessWidget {
   return MaterialApp(
     home: HomePagePlaceHolder(),
     routes: {
-      "/log": (context) => LogPage(),
+      "/log": (context) => LogPagePlaceHolder(),
       "/home": (context) => HomePagePlaceHolder(),
-      "/report": (context) => ReportPage(),
+      "/report": (context) => ReportPagePlaceHolder(),
     },
   );
 }

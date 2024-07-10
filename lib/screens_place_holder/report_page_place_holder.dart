@@ -1,8 +1,8 @@
 import 'package:ammasevasadanam_app/menu_bottom';
 import 'package:flutter/material.dart';
 
-class ReportPage extends StatelessWidget {
-  const ReportPage({super.key});
+class ReportPagePlaceHolder extends StatelessWidget {
+  const ReportPagePlaceHolder({super.key});
 
   @override
   Widget build(BuildContext context) {

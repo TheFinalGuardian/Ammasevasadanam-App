@@ -10,7 +10,7 @@ class MenuBottom extends StatelessWidget {
     return BottomNavigationBar(
       items: [     
         BottomNavigationBarItem(
-          icon: Icon(Icons.home_filled),
+          icon: Icon(Icons.home),
           label: "Home",
         ),
         BottomNavigationBarItem(
