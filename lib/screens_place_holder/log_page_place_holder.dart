@@ -1,4 +1,4 @@
-import 'package:ammasevasadanam_app/menu_bottom';
+import 'package:ammasevasadanam_app/menu_bottom.dart';
 import 'package:flutter/material.dart';
 
 class LogPagePlaceHolder extends StatelessWidget {
@@ -10,7 +10,7 @@ class LogPagePlaceHolder extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Log Page"),
       ),
-      bottomNavigationBar: MenuBottom(),
+      bottomNavigationBar: const MenuBottom(),
     );
   }
 }
