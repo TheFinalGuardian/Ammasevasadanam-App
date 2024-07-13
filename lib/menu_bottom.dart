@@ -1,12 +1,25 @@
+import 'package:ammasevasadanam_app/home_page.dart';
+import 'package:ammasevasadanam_app/screens_place_holder/log_page_place_holder_folder/log_page_place_holder.dart';
+import 'package:ammasevasadanam_app/screens_place_holder/report_page_place_holder.dart';
+import 'package:ammasevasadanam_app/transition_animation_folder/left_to_right.dart';
+import 'package:ammasevasadanam_app/transition_animation_folder/right_to_left.dart';
 import 'package:flutter/material.dart';
+int track = 1;
 
-class MenuBottom extends StatelessWidget {
-  const MenuBottom({
+class MenuBottom extends StatefulWidget {
+    MenuBottom({
     super.key,
   });
+  
+  @override
+  State<MenuBottom> createState() => _MenuBottomState();
+  
+}
 
+class _MenuBottomState extends State<MenuBottom> {
   @override
   Widget build(BuildContext context) {
+    
     return BottomNavigationBar(
       items: const [     
         BottomNavigationBarItem(
@@ -25,13 +38,37 @@ class MenuBottom extends StatelessWidget {
       onTap: (int index) {
         switch(index){
           case 0:
-            Navigator.pushNamed(context,"/log");
+            if ((track == 1)||(track == 2)){
+              Navigator.of(context).pushReplacement(LeftToRight(LogPage()));
+              setState(() {
+                track = 0;
+              });
+            } 
             break;
+
           case 1:
-          Navigator.pushNamed(context,"/home");
+            if(track == 0){
+              setState((){
+                track = 1;
+              });
+              Navigator.of(context).pushReplacement(RightToLeft(HomePage()));
+              
+            }
+            if (track == 2){
+              Navigator.of(context).pushReplacement(LeftToRight(HomePage()));
+              setState((){
+                track = 1;
+              });
+            }
             break;
+
           case 2:
-            Navigator.pushNamed(context,"/report");
+            if ((track == 0)||(track == 1)){
+              Navigator.of(context).pushReplacement(RightToLeft(ReportPagePlaceHolder()));
+              setState((){
+                track = 2;
+              });
+            }
             break;
         }
       }

@@ -1,8 +1,8 @@
 import 'package:ammasevasadanam_app/menu_bottom.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePagePlaceHolder extends StatelessWidget {
+  const HomePagePlaceHolder({super.key});
 
   @override
   Widget build(BuildContext context) {
