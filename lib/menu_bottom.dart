@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 int track = 1;
 
 class MenuBottom extends StatefulWidget {
-    MenuBottom({
+    const MenuBottom({
     super.key,
   });
   
@@ -39,7 +39,7 @@ class _MenuBottomState extends State<MenuBottom> {
         switch(index){
           case 0:
             if ((track == 1)||(track == 2)){
-              Navigator.of(context).pushReplacement(LeftToRight(LogPage()));
+              Navigator.of(context).pushReplacement(LeftToRight(const LogPage()));
               setState(() {
                 track = 0;
               });
@@ -51,11 +51,11 @@ class _MenuBottomState extends State<MenuBottom> {
               setState((){
                 track = 1;
               });
-              Navigator.of(context).pushReplacement(RightToLeft(HomePage()));
+              Navigator.of(context).pushReplacement(RightToLeft(const HomePage()));
               
             }
             if (track == 2){
-              Navigator.of(context).pushReplacement(LeftToRight(HomePage()));
+              Navigator.of(context).pushReplacement(LeftToRight(const HomePage()));
               setState((){
                 track = 1;
               });
@@ -64,7 +64,7 @@ class _MenuBottomState extends State<MenuBottom> {
 
           case 2:
             if ((track == 0)||(track == 1)){
-              Navigator.of(context).pushReplacement(RightToLeft(ReportPagePlaceHolder()));
+              Navigator.of(context).pushReplacement(RightToLeft(const ReportPagePlaceHolder()));
               setState((){
                 track = 2;
               });

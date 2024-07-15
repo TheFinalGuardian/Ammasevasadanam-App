@@ -8,7 +8,7 @@ class Submit extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
       },
-      child: Text("Submit")
+      child: const Text("Submit")
       );
   }
 }

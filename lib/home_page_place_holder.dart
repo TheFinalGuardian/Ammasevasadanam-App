@@ -36,7 +36,7 @@ class HomePagePlaceHolder extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: MenuBottom(),
+        bottomNavigationBar: const MenuBottom(),
         );
   }
 }

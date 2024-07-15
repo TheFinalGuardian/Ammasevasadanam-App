@@ -14,11 +14,11 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePagePlaceHolder(),
+      home: const HomePagePlaceHolder(),
       routes: {
-        "/log": (context) => LogPage(),
-        "/home": (context) => HomePage(),
-        "/report": (context) => ReportPagePlaceHolder(),
+        "/log": (context) => const LogPage(),
+        "/home": (context) => const HomePage(),
+        "/report": (context) => const ReportPagePlaceHolder(),
       },
     );
   }

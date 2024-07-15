@@ -15,7 +15,7 @@ class LogPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
+        title: const Center(
           child: Text("Log Page")
           )
       ),
@@ -24,7 +24,7 @@ class LogPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            const Row(
               children: [
                 SizedBox(width: 20),
                   Text("Select Type of Log: "),
@@ -35,25 +35,25 @@ class LogPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 20.0, top: 10.0),
               child: Container(
-                child: Category()
+                child: const Category()
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 20.0, top: 10.0),
+              padding: const EdgeInsets.only(left: 20.0, top: 10.0),
               child: Container(
-                child: Particulars(),
+                child: const Particulars(),
               ),
             ),
             Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, top: 10.0),
+                const Padding(
+                  padding: EdgeInsets.only(left: 20.0, top: 10.0),
                   child: Text("VCH Type: "),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0, top: 10.0),
                   child: Container(
-                    child: VchType()
+                    child: const VchType()
                   ),
                 ),
               ],
@@ -61,7 +61,7 @@ class LogPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 48.0, top: 10.0),
               child: Container(
-                child: VchNum()
+                child: const VchNum()
               ),
             ),
             Row(
@@ -69,7 +69,7 @@ class LogPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0, top: 10.0),
                   child: Container(
-                    child: Text(
+                    child: const Text(
                       "₹"
                       )
                     ),
@@ -77,7 +77,7 @@ class LogPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0, top: 10.0),
                   child: Container(
-                    child: Amount()
+                    child: const Amount()
                     ),
                 ),
               ],
@@ -86,14 +86,14 @@ class LogPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 25.0),
                 child: Container(
-                  child: Submit(),
+                  child: const Submit(),
                   ),
               ),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: MenuBottom(),
+      bottomNavigationBar: const MenuBottom(),
     );
   }
 }
