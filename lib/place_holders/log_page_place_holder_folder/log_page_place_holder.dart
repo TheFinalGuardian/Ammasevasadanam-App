@@ -1,11 +1,11 @@
 import 'package:ammasevasadanam_app/menu_bottom.dart';
-import 'package:ammasevasadanam_app/screens_place_holder/log_page_place_holder_folder/amount.dart';
-import 'package:ammasevasadanam_app/screens_place_holder/log_page_place_holder_folder/category.dart';
-import 'package:ammasevasadanam_app/screens_place_holder/log_page_place_holder_folder/drop_down_menu_type_of_log.dart';
-import 'package:ammasevasadanam_app/screens_place_holder/log_page_place_holder_folder/particulars.dart';
-import 'package:ammasevasadanam_app/screens_place_holder/log_page_place_holder_folder/submit.dart';
-import 'package:ammasevasadanam_app/screens_place_holder/log_page_place_holder_folder/vch_num.dart';
-import 'package:ammasevasadanam_app/screens_place_holder/log_page_place_holder_folder/vch_type.dart';
+import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/amount.dart';
+import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/category.dart';
+import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/drop_down_menu_type_of_log.dart';
+import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/particulars.dart';
+import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/submit.dart';
+import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/vch_num.dart';
+import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/vch_type.dart';
 import 'package:flutter/material.dart';
 
 class LogPage extends StatelessWidget {
