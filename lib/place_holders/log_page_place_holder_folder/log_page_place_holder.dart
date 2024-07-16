@@ -19,79 +19,63 @@ class LogPage extends StatelessWidget {
           child: Text("Log Page")
           )
       ),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Row(
-              children: [
-                SizedBox(width: 20),
-                  Text("Select Type of Log: "),
-                  SizedBox(width: 10,),
-                  DropDownMenuTypeOfLog(),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 10.0),
-              child: Container(
-                child: const Category()
+      body: const Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              SizedBox(width: 20),
+                Text("Select Type of Log: "),
+                SizedBox(width: 10,),
+                DropDownMenuTypeOfLog(),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 20.0, top: 10.0),
+            child: Category(),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 20.0, top: 10.0),
+            child: Particulars(),
+          ),
+          Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 20.0, top: 10.0),
+                child: Text("VCH Type: "),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 10.0),
-              child: Container(
-                child: const Particulars(),
+              Padding(
+                padding: EdgeInsets.only(left: 20.0, top: 10.0),
+                child: VchType(),
               ),
-            ),
-            Row(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                  child: Text("VCH Type: "),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, top: 10.0),
-                  child: Container(
-                    child: const VchType()
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 48.0, top: 10.0),
-              child: Container(
-                child: const VchNum()
-              ),
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, top: 10.0),
-                  child: Container(
-                    child: const Text(
-                      "₹"
-                      )
-                    ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, top: 10.0),
-                  child: Container(
-                    child: const Amount()
-                    ),
-                ),
-              ],
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 25.0),
-                child: Container(
-                  child: const Submit(),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 48.0, top: 10.0),
+            child: VchNum(),
+          ),
+          Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 20.0, top: 10.0),
+                child: Text(
+                  "₹"
                   ),
               ),
+              Padding(
+                padding: EdgeInsets.only(left: 20.0, top: 10.0),
+                child: Amount(),
+              ),
+            ],
+          ),
+          Center(
+            child: Padding(
+              padding: EdgeInsets.only(top: 25.0),
+              child: Submit(),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       bottomNavigationBar: const MenuBottom(),
     );

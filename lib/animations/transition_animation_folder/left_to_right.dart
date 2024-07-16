@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Route LeftToRight(Widget T) {
+Route leftToRight(Widget T) {
   
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => T,

@@ -9,15 +9,15 @@ class VchType extends StatefulWidget {
 }
 
 class _VchTypeState extends State<VchType> {
-  String VCHSelect = Type.first;
+  String vchSelect = Type.first;
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
-      value: VCHSelect,
+      value: vchSelect,
       onChanged: (String? value) {
         // This is called when the user selects an item.
         setState(() {
-          VCHSelect = value!;
+          vchSelect = value!;
         });
       },
       items: Type.map<DropdownMenuItem<String>>((String value) {
