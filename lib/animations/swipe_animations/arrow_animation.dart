@@ -10,6 +10,6 @@ Widget arrowAnim() {
           colorFilter: const ColorFilter.mode(Colors.black, BlendMode.modulate),
           child: SvgPicture.asset('images/arrow.svg')),
       growable: true,
-    ).animate(interval: 400.ms).fade(),
+    ).animate(interval: 400.ms).fade().reversed.toList(),
   );
 }
