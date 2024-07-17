@@ -42,16 +42,16 @@ class HomePage extends StatelessWidget {
     return FittedBox(
       child: Row(
         children: [
-          const Column(
+          Column(
             children: [
-              Text("SWIPE LEFT"),
-              ArrowAnimation(),
+              const Text("SWIPE LEFT"),
+              arrowAnim(),
             ],
           ),
           Column(
             children: [
               const Text("SWIPE RIGHT"),
-              Transform.scale(scaleX: -1, child: const ArrowAnimation()),
+              Transform.scale(scaleX: -1, child: arrowAnim()),
             ],
           ),
         ],
