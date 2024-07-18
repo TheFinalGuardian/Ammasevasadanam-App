@@ -45,13 +45,13 @@ class HomePage extends StatelessWidget {
           Column(
             children: [
               const Text("SWIPE LEFT"),
-              arrowAnim(),
+              ArrowAnimation(),
             ],
           ),
           Column(
             children: [
               const Text("SWIPE RIGHT"),
-              Transform.scale(scaleX: -1, child: arrowAnim()),
+              Transform.scale(scaleX: -1, child: ArrowAnimation()),
             ],
           ),
         ],

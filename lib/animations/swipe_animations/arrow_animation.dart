@@ -24,8 +24,8 @@ class _ArrowAnimationState extends State<ArrowAnimation> {
       )
           .animate(interval: 1.seconds)
           .fade(
-              duration: 80.seconds,
-              curve: const SineCurve(count: 10)
+              duration: 160.seconds,
+              curve: const SineCurve(count: 5)
             )
           .reversed
           .toList(),
@@ -41,7 +41,7 @@ class SineCurve extends Curve {
   // t = x
   @override
   double transformInternal(double t) {
-    var val = sin(count * 2 * pi * t) + 0.5;
+    var val = sin(count * 8 * pi * t) + 0.5;
     return val; //f(x)
   }
 }
