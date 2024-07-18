@@ -20,5 +20,7 @@ class App extends StatelessWidget {
         "/report": (context) => const ReportPagePlaceHolder(),
       },
     );
+  
   }
+  
 }
