@@ -75,6 +75,16 @@ class LogPage extends StatelessWidget {
               child: Submit(),
             ),
           ),
+          Padding(
+            padding: EdgeInsets.only(left: 20.0, top: 10.0),
+            child: Text("Edit Added Entries:"),
+          ),
+          /*Padding(
+            padding: EdgeInsets.only(left: 20.0, top: 10.0),
+            child: AddedMonthlyEntriesList(),
+          ),*/
+
+
         ],
       ),
       bottomNavigationBar: const MenuBottom(),
