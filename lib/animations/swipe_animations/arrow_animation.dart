@@ -11,6 +11,8 @@ class ArrowAnimation extends StatefulWidget {
 }
 
 class _ArrowAnimationState extends State<ArrowAnimation> {
+  double ratio = 1 / 4;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -22,11 +24,8 @@ class _ArrowAnimationState extends State<ArrowAnimation> {
             child: SvgPicture.asset('images/arrow.svg')),
         growable: true,
       )
-          .animate(interval: 1.seconds)
-          .fade(
-              duration: 80.seconds,
-              curve: const SineCurve(count: 10)
-            )
+          .animate(interval: .6.seconds)
+          .fade(duration: 8000.seconds, curve: const SineCurve(count: 2000))
           .reversed
           .toList(),
     );
@@ -41,7 +40,7 @@ class SineCurve extends Curve {
   // t = x
   @override
   double transformInternal(double t) {
-    var val = sin(count * 2 * pi * t) + 0.5;
+    var val = sin(count * 2 * pi * t);
     return val; //f(x)
   }
 }

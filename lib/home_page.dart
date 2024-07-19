@@ -7,8 +7,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    // double width = MediaQuery.of(context).size.width;
+    // double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: genAppBar(),
@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
   Widget genInstructions() {
     return const Column(children: [
       Text(
-          """    This application is meant to be used for logging expenses and donations. Admins will be able to see statistics using a password. """),
+          """    This application is meant to be used for logging expenses and donations. To log, please go to the log page to the left. If you would like to see and edit data and statistics, you will need a password.The statistics page is to the right."""),
       Text("To navigate between pages:"),
     ]);
   }
