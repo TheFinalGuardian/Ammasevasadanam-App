@@ -24,8 +24,11 @@ class _ArrowAnimationState extends State<ArrowAnimation> {
             child: SvgPicture.asset('images/arrow.svg')),
         growable: true,
       )
-          .animate(interval: .6.seconds)
-          .fade(duration: 8000.seconds, curve: const SineCurve(count: 2000))
+          .animate(interval: 1.seconds)
+          .fade(
+              duration: 160.seconds,
+              curve: const SineCurve(count: 5)
+            )
           .reversed
           .toList(),
     );
