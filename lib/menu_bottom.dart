@@ -1,4 +1,7 @@
 import 'package:ammasevasadanam_app/home_page.dart';
+import 'package:ammasevasadanam_app/pages_with_swipe_animation/home_page_with_animation.dart';
+import 'package:ammasevasadanam_app/pages_with_swipe_animation/log_page_with_animation.dart';
+import 'package:ammasevasadanam_app/pages_with_swipe_animation/report_page_with_animation.dart';
 import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/log_page_place_holder.dart';
 import 'package:ammasevasadanam_app/place_holders/report_page_place_holder.dart';
 import 'package:ammasevasadanam_app/animations/transition_animation_folder/left_to_right.dart';
@@ -39,7 +42,7 @@ class _MenuBottomState extends State<MenuBottom> {
             case 0:
               if ((track == 1) || (track == 2)) {
                 Navigator.of(context)
-                    .pushReplacement(leftToRight(const LogPage()));
+                    .pushReplacement(leftToRight(const LogPageWithAnimation()));
                 setState(() {
                   track = 0;
                 });
@@ -52,11 +55,11 @@ class _MenuBottomState extends State<MenuBottom> {
                   track = 1;
                 });
                 Navigator.of(context)
-                    .pushReplacement(rightToLeft(const HomePage()));
+                    .pushReplacement(rightToLeft(const HomePageWithAnimation()));
               }
               if (track == 2) {
                 Navigator.of(context)
-                    .pushReplacement(leftToRight(const HomePage()));
+                    .pushReplacement(leftToRight(const HomePageWithAnimation()));
                 setState(() {
                   track = 1;
                 });
@@ -66,7 +69,7 @@ class _MenuBottomState extends State<MenuBottom> {
             case 2:
               if ((track == 0) || (track == 1)) {
                 Navigator.of(context).pushReplacement(
-                    rightToLeft(const ReportPagePlaceHolder()));
+                    rightToLeft(const ReportPageWithAnimation()));
                 setState(() {
                   track = 2;
                 });

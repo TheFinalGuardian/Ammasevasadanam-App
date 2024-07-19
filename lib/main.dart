@@ -1,4 +1,5 @@
 import 'package:ammasevasadanam_app/home_page.dart';
+import 'package:ammasevasadanam_app/pages_with_swipe_animation/home_page_with_animation.dart';
 import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/log_page_place_holder.dart';
 import 'package:ammasevasadanam_app/place_holders/report_page_place_holder.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const HomePage(),
+      home: const HomePageWithAnimation(), 
       routes: {
         "/log": (context) => const LogPage(),
         "/home": (context) => const HomePage(),

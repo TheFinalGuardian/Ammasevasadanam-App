@@ -1,4 +1,5 @@
 import 'package:ammasevasadanam_app/menu_bottom.dart';
+import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/added_monthly_entries_list.dart';
 import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/amount.dart';
 import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/category.dart';
 import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/drop_down_menu_type_of_log.dart';
@@ -75,6 +76,16 @@ class LogPage extends StatelessWidget {
               child: Submit(),
             ),
           ),
+          Padding(
+            padding: EdgeInsets.only(left: 20.0, top: 10.0),
+            child: Text("Edit Added Entries:"),
+          ),
+          /*Padding(
+            padding: EdgeInsets.only(left: 20.0, top: 10.0),
+            child: AddedMonthlyEntriesList(),
+          ),*/
+
+
         ],
       ),
       bottomNavigationBar: const MenuBottom(),
