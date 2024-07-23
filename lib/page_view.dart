@@ -4,7 +4,6 @@ import 'package:ammasevasadanam_app/log_page_stuff/log_page_place_holder_with_sc
 import 'package:ammasevasadanam_app/menu_bottom.dart';
 import 'package:ammasevasadanam_app/place_holders/report_page_place_holder.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'dart:async';
 
 class PageViewVersion extends StatefulWidget {
@@ -14,33 +13,39 @@ class PageViewVersion extends StatefulWidget {
 
 int pageChanged = 1;
 
-List<Widget> pages = [LogPage(), HomePage(), ReportPagePlaceHolder()];
+List<Widget> pages = [LogPagePlaceHolderWithScroll(), HomePage(), ReportPagePlaceHolder()];
 PageController pageController = PageController(initialPage: 1);
 
 class _PageViewVersionState extends State<PageViewVersion> {
 
   void changePage(int x){
     pageController.jumpToPage(x);
-    Future.delayed(2.seconds);
     track = x;
   }
 /*
+  void refresh(Duration duration) {
+  setState(() {
+  });
+}
+
   void changePageAnimate(int x,int swap1, int swap2) async {
-    await pageController.animateToPage(pageChanged + x, duration: Duration(milliseconds: 1000), curve: Curves.easeInSine,);
-    swapPage(1,0);
+    await pageController.animateToPage(pageChanged + x, duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+    swapPage2(1,0);
   }
 
   swapPage (int currentPage, int targetPage){
         var temp = pages[currentPage];
         pages[currentPage] = pages[targetPage];
         pages[targetPage] = temp;
+        setState(() {
+        });
   }
   swapPage2 (int currentPage, int targetPage){
         var temp = pages[currentPage];
         pages[currentPage] = pages[targetPage];
         pages[targetPage] = temp;
   }
-*/
+*/  
 
   @override
   Widget build(BuildContext context) {
