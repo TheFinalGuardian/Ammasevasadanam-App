@@ -11,6 +11,8 @@ class ArrowAnimation extends StatefulWidget {
 }
 
 class _ArrowAnimationState extends State<ArrowAnimation> {
+  double ratio = 1 / 4;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -41,7 +43,7 @@ class SineCurve extends Curve {
   // t = x
   @override
   double transformInternal(double t) {
-    var val = sin(count * 2 * pi * t);
+    var val = sin(count * 2 * pi * t)+.5;
     return val; //f(x)
   }
 }
