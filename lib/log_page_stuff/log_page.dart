@@ -83,8 +83,6 @@ class LogPage extends StatelessWidget {
             padding: EdgeInsets.only(left: 20.0, top: 10.0),
             child: AddedMonthlyEntriesList(),
           ),*/
-
-
         ],
       ),
       bottomNavigationBar: const MenuBottom(),
