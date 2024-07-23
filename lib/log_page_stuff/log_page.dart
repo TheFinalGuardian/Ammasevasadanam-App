@@ -1,3 +1,4 @@
+import 'package:ammasevasadanam_app/log_page_stuff/added_monthly_entries_list.dart';
 import 'package:ammasevasadanam_app/menu_bottom.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/amount.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/category.dart';
@@ -79,13 +80,12 @@ class LogPage extends StatelessWidget {
             padding: EdgeInsets.only(left: 20.0, top: 10.0),
             child: Text("Edit Added Entries:"),
           ),
-          /*Padding(
+          Padding(
             padding: EdgeInsets.only(left: 20.0, top: 10.0),
             child: AddedMonthlyEntriesList(),
-          ),*/
+          ),
         ],
       ),
-      bottomNavigationBar: const MenuBottom(),
     );
   }
 }

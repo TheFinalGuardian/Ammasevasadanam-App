@@ -11,7 +11,8 @@ class _AddedMonthlyEntriesListState extends State<AddedMonthlyEntriesList> {
   @override
   Widget build(BuildContext context) {
         return ListView(
-                children: const <Widget>[
+        shrinkWrap: true,
+        children: const <Widget>[
         ListTile(
           leading: Icon(Icons.map),
           title: Text('Map'),

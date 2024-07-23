@@ -18,7 +18,6 @@ class HomePage extends StatelessWidget {
           genArrowAnims(),
         ],
       ),
-      bottomNavigationBar: const MenuBottom(),
     );
   }
 

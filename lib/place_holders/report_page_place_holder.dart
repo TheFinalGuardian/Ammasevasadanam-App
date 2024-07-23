@@ -10,7 +10,6 @@ class ReportPagePlaceHolder extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Report Page"),
       ),
-      bottomNavigationBar: const MenuBottom(),
     );
   }
 }
