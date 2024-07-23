@@ -6,20 +6,23 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Stack(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                genInstructions(context),
-                genArrowAnims(context),
-                genPageInstructions(context),
-              ],
-            ),
-          )
-        ],
+    return Scaffold(
+      appBar: genAppBar(context),
+      body: SingleChildScrollView(
+        child: Stack(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  genInstructions(context),
+                  genArrowAnims(context),
+                  genPageInstructions(context),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
