@@ -1,7 +1,7 @@
-import 'package:ammasevasadanam_app/home_page.dart';
+import 'package:ammasevasadanam_app/animations/swipe_animations/swipe_pages/swipe_log_page.dart';
+import 'package:ammasevasadanam_app/animations/swipe_animations/swipe_pages/swipe_report_page.dart';
 import 'package:ammasevasadanam_app/animations/swipe_animations/swipe_pages/swipe_home_page.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
-import 'package:ammasevasadanam_app/page_view.dart';
 import 'package:ammasevasadanam_app/place_holders/report_page_place_holder.dart';
 import 'package:flutter/material.dart';
 
@@ -16,8 +16,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: PageViewVersion(),
+      home: const HomePageWithAnimation(), 
+      routes: {
+        "/log": (context) => const LogPage(),
+        "/home": (context) => const HomePage(),
+        "/report": (context) => const ReportPagePlaceHolder(),
+      },
     );
   }
-  
 }
