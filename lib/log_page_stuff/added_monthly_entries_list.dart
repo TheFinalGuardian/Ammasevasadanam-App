@@ -1,7 +1,9 @@
+import 'package:ammasevasadanam_app/custom_tile.dart';
+import 'package:ammasevasadanam_app/report_page_stuff/monthly_entries.dart';
 import 'package:flutter/material.dart';
 
 class AddedMonthlyEntriesList extends StatefulWidget {
-  const AddedMonthlyEntriesList({super.key});
+  AddedMonthlyEntriesList({super.key});
 
   @override
   State<AddedMonthlyEntriesList> createState() => _AddedMonthlyEntriesListState();
@@ -12,19 +14,8 @@ class _AddedMonthlyEntriesListState extends State<AddedMonthlyEntriesList> {
   Widget build(BuildContext context) {
         return ListView(
         shrinkWrap: true,
-        children: const <Widget>[
-        ListTile(
-          leading: Icon(Icons.map),
-          title: Text('Map'),
-        ),
-        ListTile(
-          leading: Icon(Icons.photo_album),
-          title: Text('Album'),
-        ),
-        ListTile(
-          leading: Icon(Icons.phone),
-          title: Text('Phone'),
-        ),
+        children: <Widget>[
+        CustomTile(date: '6/1/24', TileName: "Log", Person: "Vikram", cost: '100'),
       ],
     ); 
   }

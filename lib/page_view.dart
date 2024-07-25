@@ -1,8 +1,8 @@
 import 'package:ammasevasadanam_app/home_page.dart';
+import 'package:ammasevasadanam_app/log_page_stuff/log_page_no_scroll.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/log_page_place_holder_with_scroll.dart';
 import 'package:ammasevasadanam_app/menu_bottom.dart';
-import 'package:ammasevasadanam_app/place_holders/report_page_place_holder.dart';
+import 'package:ammasevasadanam_app/report_page_stuff/report_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -13,7 +13,11 @@ class PageViewVersion extends StatefulWidget {
 
 int pageChanged = 1;
 
-List<Widget> pages = [LogPagePlaceHolderWithScroll(), HomePage(), ReportPagePlaceHolder()];
+List<Widget> pages = [
+  LogPage(),
+  HomePage(),
+  ReportPage()
+];
 PageController pageController = PageController(initialPage: 1);
 
 class _PageViewVersionState extends State<PageViewVersion> {
@@ -22,30 +26,6 @@ class _PageViewVersionState extends State<PageViewVersion> {
     pageController.jumpToPage(x);
     track = x;
   }
-/*
-  void refresh(Duration duration) {
-  setState(() {
-  });
-}
-
-  void changePageAnimate(int x,int swap1, int swap2) async {
-    await pageController.animateToPage(pageChanged + x, duration: Duration(milliseconds: 500), curve: Curves.easeIn);
-    swapPage2(1,0);
-  }
-
-  swapPage (int currentPage, int targetPage){
-        var temp = pages[currentPage];
-        pages[currentPage] = pages[targetPage];
-        pages[targetPage] = temp;
-        setState(() {
-        });
-  }
-  swapPage2 (int currentPage, int targetPage){
-        var temp = pages[currentPage];
-        pages[currentPage] = pages[targetPage];
-        pages[targetPage] = temp;
-  }
-*/  
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +39,37 @@ class _PageViewVersionState extends State<PageViewVersion> {
           });
         },
         children: [
-          pages[0],
-          pages[1],
-          pages[2],
+          GestureDetector(
+            onPanUpdate: (details) {
+          if (details.delta.dy != 0) {
+            Scrollable.ensureVisible(
+              context,
+              alignment: 0.5,
+            );
+          }
+        },
+            child: pages[0]
+            ),
+          GestureDetector(
+            onPanUpdate: (details) {
+          if (details.delta.dy != 0) {
+            Scrollable.ensureVisible(
+              context,
+              alignment: 0.5,
+            );
+          }
+        },
+            child: pages[1]),
+          GestureDetector(
+            onPanUpdate: (details) {
+          if (details.delta.dy != 0) {
+            Scrollable.ensureVisible(
+              context,
+              alignment: 0.5,
+            );
+          }
+        },
+            child: pages[2]),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
