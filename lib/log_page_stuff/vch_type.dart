@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 const List<String> Type = <String>["Payment", "Contra"];
 
 class VchType extends StatefulWidget {
@@ -26,7 +27,6 @@ class _VchTypeState extends State<VchType> {
           child: Text(value),
         );
       }).toList(),
-
     );
   }
 }

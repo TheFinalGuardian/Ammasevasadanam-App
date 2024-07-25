@@ -1,5 +1,4 @@
 import 'package:ammasevasadanam_app/log_page_stuff/added_monthly_entries_list.dart';
-import 'package:ammasevasadanam_app/menu_bottom.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/amount.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/category.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/drop_down_menu_type_of_log.dart';
@@ -10,26 +9,24 @@ import 'package:ammasevasadanam_app/log_page_stuff/vch_type.dart';
 import 'package:flutter/material.dart';
 
 class LogPageNoScroll extends StatelessWidget {
-  LogPageNoScroll({super.key});
+  const LogPageNoScroll({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Center(
-          child: Text("Log Page")
-          )
-      ),
-      body: Column(
+      appBar: AppBar(title: const Center(child: Text("Log Page"))),
+      body: const Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               SizedBox(width: 20),
-                Text("Select Type of Log: "),
-                SizedBox(width: 10,),
-                DropDownMenuTypeOfLog(),
+              Text("Select Type of Log: "),
+              SizedBox(
+                width: 10,
+              ),
+              DropDownMenuTypeOfLog(),
             ],
           ),
           Padding(
@@ -60,9 +57,7 @@ class LogPageNoScroll extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                child: Text(
-                  "₹"
-                  ),
+                child: Text("₹"),
               ),
               Padding(
                 padding: EdgeInsets.only(left: 20.0, top: 10.0),

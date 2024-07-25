@@ -9,10 +9,7 @@ class DownloadButton extends StatelessWidget {
       width: 324.0,
       height: 36.0,
       child: ElevatedButton(
-        onPressed: () {
-        },
-        child: const Text("Download Monthly Report")
-        ),
+          onPressed: () {}, child: const Text("Download Monthly Report")),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 const List<String> typeOfLogOption = <String>['Donation', 'Expense'];
 
 class DropDownMenuTypeOfLog extends StatefulWidget {
@@ -12,7 +13,6 @@ class _DropDownMenuTypeOfLogState extends State<DropDownMenuTypeOfLog> {
   String dropdownValue = typeOfLogOption.first;
   @override
   Widget build(BuildContext context) {
-
     return DropdownButton(
       value: dropdownValue,
       onChanged: (String? value) {
@@ -27,7 +27,6 @@ class _DropDownMenuTypeOfLogState extends State<DropDownMenuTypeOfLog> {
           child: Text(value),
         );
       }).toList(),
-
     );
   }
 }

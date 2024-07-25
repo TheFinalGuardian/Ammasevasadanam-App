@@ -11,13 +11,14 @@ class ReportPageWithAnimation extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: const ReportPage(),
-      onHorizontalDragUpdate: (details){
+      onHorizontalDragUpdate: (details) {
         int sensitivity = 6;
         if (details.delta.dx > sensitivity) {
-            Navigator.of(context).pushReplacement(leftToRight(const HomePageWithAnimation()));
-            track = 1;
+          Navigator.of(context)
+              .pushReplacement(leftToRight(const HomePageWithAnimation()));
+          track = 1;
         }
       },
-      );
+    );
   }
 }

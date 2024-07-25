@@ -49,7 +49,9 @@ class _ArrowAnimationState extends State<ArrowAnimation>
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.center, children: arrows.reversed.toList());
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: arrows.reversed.toList());
   }
 
   @override

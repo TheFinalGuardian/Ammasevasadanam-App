@@ -2,7 +2,6 @@ import 'package:ammasevasadanam_app/log_page_stuff/added_monthly_entries_list.da
 import 'package:ammasevasadanam_app/log_page_stuff/amount.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/category.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/drop_down_menu_type_of_log.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/log_page_no_scroll.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/particulars.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/submit_button.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/vch_num.dart';
@@ -10,24 +9,28 @@ import 'package:ammasevasadanam_app/log_page_stuff/vch_type.dart';
 import 'package:flutter/material.dart';
 
 class LogPage extends StatelessWidget {
-  LogPage({super.key});
+  const LogPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Log Page'),),
-      body: SingleChildScrollView(
-      child: Stack( children: <Widget>[
-          Column(
+      appBar: AppBar(
+        title: const Text('Log Page'),
+      ),
+      body: const SingleChildScrollView(
+          child: Stack(children: <Widget>[
+        Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
                 SizedBox(width: 20),
-                  Text("Select Type of Log: "),
-                  SizedBox(width: 10,),
-                  DropDownMenuTypeOfLog(),
+                Text("Select Type of Log: "),
+                SizedBox(
+                  width: 10,
+                ),
+                DropDownMenuTypeOfLog(),
               ],
             ),
             Padding(
@@ -58,9 +61,7 @@ class LogPage extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                  child: Text(
-                    "₹"
-                    ),
+                  child: Text("₹"),
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 20.0, top: 10.0),

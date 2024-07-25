@@ -1,4 +1,3 @@
-import 'package:ammasevasadanam_app/menu_bottom.dart';
 import 'package:ammasevasadanam_app/report_page_stuff/download_button.dart';
 import 'package:ammasevasadanam_app/report_page_stuff/monthly_entries.dart';
 import 'package:flutter/material.dart';
@@ -9,12 +8,12 @@ class ReportPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Report Page"),
-      ),
-      body: SingleChildScrollView(
-        child: Stack( children: <Widget>[
-            Column(
+        appBar: AppBar(
+          title: const Text("Report Page"),
+        ),
+        body: const SingleChildScrollView(
+            child: Stack(children: <Widget>[
+          Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -32,15 +31,12 @@ class ReportPage extends StatelessWidget {
                 ),
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 10.0, right: 20.0, left: 20.0),
+                    padding:
+                        EdgeInsets.only(top: 10.0, right: 20.0, left: 20.0),
                     child: MonthlyEntries(),
                   ),
                 )
-              ]
-            )
-          ]
-        )
-      )
-    );
+              ])
+        ])));
   }
 }
