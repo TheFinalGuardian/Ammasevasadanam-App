@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ammasevasadanam_app/animations/swipe_animations/arrow_animation.dart';
 
+String bullet = "\u2022 ";
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -86,15 +88,16 @@ class HomePage extends StatelessWidget {
     return [
       Text('Log Page', style: Theme.of(context).textTheme.bodyMedium),
       Text(
-          'First, using the dropdown menu, select the type of log (expense or donation).',
+          '$bullet First, using the dropdown menu, select the type of log (expense or donation).',
           style: Theme.of(context).textTheme.bodyMedium),
-      const Placeholder(color: Colors.black),
-      Text('Then, set a particular or list your own if the required particular is not displayed.', style: Theme.of(context).textTheme.bodyMedium),
-      const Placeholder(color: Colors.black),
-      Text('Enter the VCH type using the dropdown menu and then enter the VCH number.',
+      Text(
+          '$bullet Then, set a particular or list your own if the required particular is not displayed.',
           style: Theme.of(context).textTheme.bodyMedium),
-      const Placeholder(color: Colors.black),
-      Text('Then press the submit button.',
+      Text(
+          '$bullet Enter the VCH type using the dropdown menu and then enter the VCH number.',
+          style: Theme.of(context).textTheme.bodyMedium),
+      Text(
+          '$bullet Then press the submit button.',
           style: Theme.of(context).textTheme.bodyMedium)
     ];
   }
