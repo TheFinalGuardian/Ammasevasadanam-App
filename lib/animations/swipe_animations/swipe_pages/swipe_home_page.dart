@@ -5,7 +5,7 @@ import 'package:ammasevasadanam_app/animations/transition_animation_folder/right
 import 'package:ammasevasadanam_app/home_page.dart';
 import 'package:ammasevasadanam_app/menu_bottom.dart';
 import 'package:flutter/material.dart';
-
+/*
 class HomePageWithAnimation extends StatelessWidget {
   const HomePageWithAnimation({super.key});
 
@@ -29,3 +29,4 @@ class HomePageWithAnimation extends StatelessWidget {
     );
   }
 }
+*/

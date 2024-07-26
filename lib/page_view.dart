@@ -13,7 +13,7 @@ class PageViewVersion extends StatefulWidget {
 
 int pageChanged = 1;
 
-List<Widget> pages = [const LogPage(), const HomePage(), const ReportPage()];
+List<Widget> pages = [LogPage(Type: "",Group: "",Title: "",VCHNum: "",VCHType: "",Cost: ""),  HomePage(),  ReportPage()];
 PageController pageController = PageController(initialPage: 1);
 
 class _PageViewVersionState extends State<PageViewVersion> {

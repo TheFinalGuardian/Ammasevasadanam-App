@@ -1,17 +1,29 @@
+import 'package:ammasevasadanam_app/animations/transition_animation_folder/left_to_right.dart';
+import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
 import 'package:flutter/material.dart';
 
 class CustomTile extends StatefulWidget {
-  final String date;
-  final String tileName;
-  final String person;
-  final String cost;
+  String date;
+  String person;
 
-  const CustomTile(
+  String Type;
+  String Group;
+  String Title;
+  String VCHType;
+  String VCHNum;
+  String Cost;
+
+  CustomTile(
       {super.key,
-      required this.date,
-      required this.tileName,
-      required this.person,
-      required this.cost});
+    required this.Type,
+    required this.Group,
+    required this.Title,
+    required this.VCHType,
+    required this.VCHNum,
+    required this.Cost,
+    required this.person,
+    required this.date
+      });
 
   @override
   State<CustomTile> createState() => _CustomTileState();
@@ -21,35 +33,39 @@ class _CustomTileState extends State<CustomTile> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(6.0),
-      child: ListTile(
+      padding: EdgeInsets.all(6.0),
+      child: Material(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-          side: const BorderSide(color: Colors.black),
-        ),
-        title: Column(
-          children: [
-            Row(
-              children: [
-                Text(
-                  widget.date,
-                  style: const TextStyle(
-                    fontStyle: FontStyle.italic,
-                    fontSize: 14,
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(color: Colors.black),
+          ),
+        child: ListTile(
+          title: Column(
+            children: [
+              Row(
+                children: [
+                  Text(
+                    widget.date,
+                    style: const TextStyle(
+                      fontStyle: FontStyle.italic,
+                      fontSize: 14,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                CustomText(input: ("${widget.tileName}: ")),
-                Text('₹${widget.cost}')
-              ],
-            ),
-          ],
+                ],
+              ),
+              Row(
+                children: [
+                  CustomText(input: ("${widget.Title}: ")),
+                  Text('₹${widget.Cost}')
+                ],
+              ),
+            ],
+          ),
+          subtitle: Text("By: ${widget.person}"),
+          onTap: () {
+            Navigator.of(context).pushReplacement(leftToRight(LogPage(Type: widget.Type, Group: widget.Group,Title: widget.Title,VCHNum: widget.VCHNum,VCHType: widget.VCHType,Cost: widget.Cost)));
+          },
         ),
-        subtitle: Text("By: ${widget.person}"),
-        onTap: () {},
       ),
     );
   }

@@ -8,18 +8,20 @@ const List<String> typeOfCategory = <String>[
 ];
 
 class Category extends StatefulWidget {
-  const Category({super.key});
+  String type;
+  Category({super.key, required this.type});
 
   @override
   State<Category> createState() => _CategoryState();
 }
 
 class _CategoryState extends State<Category> {
+
   String? cSelect;
   @override
   Widget build(BuildContext context) {
     return DropdownMenu<String>(
-      initialSelection: typeOfCategory.first,
+      initialSelection: InitialSelection(widget.type),
       onSelected: (String? value) {
         // This is called when the user selects an item.
         setState(() {
@@ -32,4 +34,18 @@ class _CategoryState extends State<Category> {
       }).toList(),
     );
   }
+
+String InitialSelection(String type){
+  if (widget.type != '') {
+        for (int x = 0; x < typeOfCategory.length; x++){
+          if (widget.type == typeOfCategory[x]){
+            return typeOfCategory[x];
+          }
+        }
+  }
+  return typeOfCategory.first;
+}
+
+
+
 }

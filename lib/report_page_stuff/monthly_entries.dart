@@ -11,50 +11,15 @@ class MonthlyEntries extends StatefulWidget {
 class _AddedMonthlyEntriesListState extends State<MonthlyEntries> {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      children: const <Widget>[
-        CustomTile(
-            date: '6/14/24',
-            tileName: "Groceries",
-            person: "Vikram",
-            cost: '333'),
-        CustomTile(
-            date: '6/15/24',
-            tileName: "Milk from KVSR",
-            person: "Jyothika",
-            cost: '60'),
-        CustomTile(
-            date: '6/14/24',
-            tileName: "Groceries",
-            person: "Vikram",
-            cost: '333'),
-        CustomTile(
-            date: '6/15/24',
-            tileName: "Milk from KVSR",
-            person: "Jyothika",
-            cost: '60'),
-        CustomTile(
-            date: '6/14/24',
-            tileName: "Groceries",
-            person: "Vikram",
-            cost: '333'),
-        CustomTile(
-            date: '6/15/24',
-            tileName: "Milk from KVSR",
-            person: "Jyothika",
-            cost: '60'),
-        CustomTile(
-            date: '6/15/24',
-            tileName: "Milk from KVSR",
-            person: "Jyothika",
-            cost: '60'),
-        CustomTile(
-            date: '6/15/24',
-            tileName: "Milk from KVSR",
-            person: "Jyothika",
-            cost: '60'),
-      ],
+    return SizedBox(
+      height: 465,
+      child: ListView(
+        shrinkWrap: true,
+        physics: ClampingScrollPhysics(),
+        children: <Widget>[
+          CustomTile(person: "Anand",date: "07/12/2024",Type: "Donation", Group: "Rent",Title: "Paying 1 Person Rent",VCHNum: "343",VCHType: "Payment",Cost: "500"),
+        ],
+      ),
     );
   }
 }

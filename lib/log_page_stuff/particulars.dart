@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Particulars extends StatefulWidget {
-  const Particulars({super.key});
+  String Title;
+  Particulars({super.key, required this.Title});
 
   @override
   State<Particulars> createState() => ParticularsState();
@@ -10,16 +11,24 @@ class Particulars extends StatefulWidget {
 class ParticularsState extends State<Particulars> {
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: null,
       width: 300,
       child: TextField(
         obscureText: false,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
-          labelText: 'Particulars',
+          labelText: InitialTitle(widget.Title),
         ),
       ),
     );
   }
 }
+
+String InitialTitle(String Title){
+    if (Title != '') {
+        return Title;
+      } else {
+        return 'Title';
+      }
+  }

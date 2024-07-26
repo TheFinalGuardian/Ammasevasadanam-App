@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 const List<String> typeOfLogOption = <String>['Donation', 'Expense'];
 
 class DropDownMenuTypeOfLog extends StatefulWidget {
-  const DropDownMenuTypeOfLog({super.key});
+  String type;
+  DropDownMenuTypeOfLog({super.key, required this.type});
 
   @override
   State<DropDownMenuTypeOfLog> createState() => _DropDownMenuTypeOfLogState();
@@ -14,7 +15,7 @@ class _DropDownMenuTypeOfLogState extends State<DropDownMenuTypeOfLog> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
-      value: dropdownValue,
+      value: firstSelect(widget.type),
       onChanged: (String? value) {
         // This is called when the user selects an item.
         setState(() {
@@ -28,5 +29,16 @@ class _DropDownMenuTypeOfLogState extends State<DropDownMenuTypeOfLog> {
         );
       }).toList(),
     );
+
+    
   }
+}
+String firstSelect(String type){
+    if(type != ''){
+      if(type == typeOfLogOption.first){
+        return typeOfLogOption.first;
+      }
+        return typeOfLogOption[1];        
+    }
+  return typeOfLogOption[1];       
 }

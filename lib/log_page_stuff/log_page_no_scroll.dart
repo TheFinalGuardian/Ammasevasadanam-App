@@ -7,7 +7,7 @@ import 'package:ammasevasadanam_app/log_page_stuff/submit_button.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/vch_num.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/vch_type.dart';
 import 'package:flutter/material.dart';
-
+/*
 class LogPageNoScroll extends StatelessWidget {
   const LogPageNoScroll({super.key});
 
@@ -84,3 +84,4 @@ class LogPageNoScroll extends StatelessWidget {
     );
   }
 }
+*/

@@ -8,16 +8,29 @@ import 'package:ammasevasadanam_app/log_page_stuff/vch_num.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/vch_type.dart';
 import 'package:flutter/material.dart';
 
-class LogPage extends StatelessWidget {
-  const LogPage({super.key});
+class LogPage extends StatefulWidget {
+  String Type;
+  String Group;
+  String Title;
+  String VCHType;
+  String VCHNum;
+  String Cost;
 
+LogPage({super.key, required this.Type, required this.Group, required this.Title, required this.VCHType, required this.VCHNum, required this.Cost });
+
+  @override
+  State<LogPage> createState() => _LogPageState();
+}
+
+class _LogPageState extends State<LogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Log Page'),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
+        physics: ClampingScrollPhysics(),
           child: Stack(children: <Widget>[
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -30,16 +43,16 @@ class LogPage extends StatelessWidget {
                 SizedBox(
                   width: 10,
                 ),
-                DropDownMenuTypeOfLog(),
+                DropDownMenuTypeOfLog(type: widget.Type),
               ],
             ),
             Padding(
               padding: EdgeInsets.only(left: 20.0, top: 10.0),
-              child: Category(),
+              child: Category(type: widget.Group),
             ),
             Padding(
               padding: EdgeInsets.only(left: 20.0, top: 10.0),
-              child: Particulars(),
+              child: Particulars(Title: widget.Title,),
             ),
             Row(
               children: [
@@ -49,13 +62,13 @@ class LogPage extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                  child: VchType(),
+                  child: VchType(VCH: widget.VCHType),
                 ),
               ],
             ),
             Padding(
               padding: EdgeInsets.only(left: 48.0, top: 10.0),
-              child: VchNum(),
+              child: VchNum(VCHNUM: widget.VCHNum),
             ),
             Row(
               children: [
@@ -65,7 +78,7 @@ class LogPage extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                  child: Amount(),
+                  child: Amount(cost: widget.Cost),
                 ),
               ],
             ),
@@ -78,10 +91,6 @@ class LogPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(left: 20.0, top: 10.0),
               child: Text("Edit Added Entries:"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 20.0, right: 20, top: 10.0),
-              child: AddedMonthlyEntriesList(),
             ),
           ],
         ),
