@@ -1,25 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:ammasevasadanam_app/animations/swipe_animations/arrow_animation.dart';
 
+String bullet = "\u2022 ";
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Stack(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                genInstructions(context),
-                genArrowAnims(context),
-                genPageInstructions(context),
-              ],
-            ),
-          )
-        ],
+    return Scaffold(
+      appBar: genAppBar(context),
+      body: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
+        child: Stack(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  genInstructions(context),
+                  genArrowAnims(context),
+                  genPageInstructions(context),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -72,34 +78,46 @@ class HomePage extends StatelessWidget {
   }
 
   Widget genPageInstructions(BuildContext context) {
-    List<Widget> list = genLogInstructions(context);
-    list.addAll(genReportInstructions(context));
     return Column(
-      children: list,
+      children: [genLogInstructions(context), genReportInstructions(context)],
     );
   }
 
-  List<Widget> genLogInstructions(BuildContext context) {
-    return [
-      Text('Log Page', style: Theme.of(context).textTheme.bodyMedium),
-      Text(
-          'First, using the dropdown menu, select the type of log (expense or donation).',
-          style: Theme.of(context).textTheme.bodyMedium),
-      const Placeholder(color: Colors.black),
-      Text(
-          'Then, set a particular or list your own if the required particular is not displayed.',
-          style: Theme.of(context).textTheme.bodyMedium),
-      const Placeholder(color: Colors.black),
-      Text(
-          'Enter the VCH type using the dropdown menu and then enter the VCH number.',
-          style: Theme.of(context).textTheme.bodyMedium),
-      const Placeholder(color: Colors.black),
-      Text('Then press the submit button.',
-          style: Theme.of(context).textTheme.bodyMedium)
-    ];
+  Widget genLogInstructions(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Column(children: [
+        Text('Log Page', style: Theme.of(context).textTheme.bodyMedium),
+        Text(
+            '$bullet First, using the dropdown menu, select the type of log (expense or donation).',
+            style: Theme.of(context).textTheme.bodyMedium),
+        Text(
+            '$bullet Then, set a particular or list your own if the required particular is not displayed.',
+            style: Theme.of(context).textTheme.bodyMedium),
+        Text(
+            '$bullet Enter the VCH type using the dropdown menu and then enter the VCH number.',
+            style: Theme.of(context).textTheme.bodyMedium),
+        Text('$bullet Then press the submit button.',
+            style: Theme.of(context).textTheme.bodyMedium)
+      ]),
+    );
   }
 
-  List<Widget> genReportInstructions(BuildContext context) {
-    return List.empty();
+  Widget genReportInstructions(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Column(children: [
+        Text('Report Page', style: Theme.of(context).textTheme.bodyMedium),
+        Text(
+            '$bullet If you would like to download your report, press the download button.',
+            style: Theme.of(context).textTheme.bodyMedium),
+        Text(
+            '$bullet To edit a log, tap one of the logs listed and scroll down to see later logs.',
+            style: Theme.of(context).textTheme.bodyMedium),
+        Text(
+            '$bullet There, you should be able to edit the information using the input bars',
+            style: Theme.of(context).textTheme.bodyMedium)
+      ]),
+    );
   }
 }
