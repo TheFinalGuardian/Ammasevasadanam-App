@@ -1,32 +1,41 @@
 import 'package:flutter/material.dart';
 
 class Amount extends StatefulWidget {
-  String cost;
-   Amount({super.key, required this.cost});
+  String? cost;
+  Amount({super.key, this.cost});
 
+  String getAmountText(){
+    String t = amountControl.text;
+    amountControl.clear();
+    return t;
+  }
   @override
   State<Amount> createState() => _AmountState();
 }
 
-class _AmountState extends State<Amount> {
+TextEditingController amountControl = TextEditingController();
 
+class _AmountState extends State<Amount> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 100,
       child: TextField(
+        controller: amountControl,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: InitialAmount(widget.cost),
+        border: const OutlineInputBorder(),
+        labelText: InitialAmount(widget.cost),
         ),
       ),
     );
   }
-  String InitialAmount(String cost){
-    if (widget.cost != "") {
-        return widget.cost;
+  String InitialAmount(String? cost){
+    if (cost != null) {
+        return cost;
       } else {
         return 'Amount';
       }
   }
 }
+
+

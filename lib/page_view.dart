@@ -5,15 +5,30 @@ import 'package:ammasevasadanam_app/report_page_stuff/report_page.dart';
 import 'package:flutter/material.dart';
 
 class PageViewVersion extends StatefulWidget {
-  const PageViewVersion({super.key});
+  PageViewVersion({super.key});
 
+  LogPage logpage = new LogPage();
+  HomePage homepage = new HomePage();
+  ReportPage reportpage = new ReportPage();
+
+  List<Widget> pages = [LogPage(), HomePage(), ReportPage()];
+
+  LogPage getLogPage(){
+    return logpage;
+  }
+
+  HomePage getHomePage(){
+    return homepage;
+  }
+
+  ReportPage getReportPage(){
+    return reportpage;
+  }
+ 
   @override
   State<PageViewVersion> createState() => _PageViewVersionState();
 }
-
 int pageChanged = 1;
-
-List<Widget> pages = [LogPage(Type: "",Group: "",Title: "",VCHNum: "",VCHType: "",Cost: ""),  HomePage(),  ReportPage()];
 PageController pageController = PageController(initialPage: 1);
 
 class _PageViewVersionState extends State<PageViewVersion> {
@@ -43,7 +58,7 @@ class _PageViewVersionState extends State<PageViewVersion> {
                     );
                   }
                 },
-                child: pages[0]),
+                child: widget.logpage),
             GestureDetector(
                 onPanUpdate: (details) {
                   if (details.delta.dy != 0) {
@@ -53,7 +68,7 @@ class _PageViewVersionState extends State<PageViewVersion> {
                     );
                   }
                 },
-                child: pages[1]),
+                child: widget.homepage),
             GestureDetector(
                 onPanUpdate: (details) {
                   if (details.delta.dy != 0) {
@@ -63,7 +78,7 @@ class _PageViewVersionState extends State<PageViewVersion> {
                     );
                   }
                 },
-                child: pages[2]),
+                child: widget.reportpage),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(

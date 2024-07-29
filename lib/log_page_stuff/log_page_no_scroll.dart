@@ -1,12 +1,3 @@
-import 'package:ammasevasadanam_app/log_page_stuff/added_monthly_entries_list.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/amount.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/category.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/drop_down_menu_type_of_log.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/particulars.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/submit_button.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/vch_num.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/vch_type.dart';
-import 'package:flutter/material.dart';
 /*
 class LogPageNoScroll extends StatelessWidget {
   const LogPageNoScroll({super.key});

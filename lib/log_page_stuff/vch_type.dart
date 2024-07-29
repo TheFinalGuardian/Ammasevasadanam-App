@@ -1,10 +1,15 @@
+
 import 'package:flutter/material.dart';
 
 const List<String> Type = <String>["Payment", "Contra"];
+String VchVal = '';
 
 class VchType extends StatefulWidget {
-  String VCH;
-   VchType({super.key, required this.VCH});
+  String? VCH;
+   VchType({super.key, this.VCH});
+   String getVchType(){
+    return VchVal;
+   }
 
   @override
   State<VchType> createState() => _VchTypeState();
@@ -17,9 +22,9 @@ class _VchTypeState extends State<VchType> {
     return DropdownButton(
       value: firstVCH(widget.VCH),
       onChanged: (String? value) {
-        // This is called when the user selects an item.
         setState(() {
-          vchSelect = value!;
+          widget.VCH = value;
+          VchVal = value!;
         });
       },
       items: Type.map<DropdownMenuItem<String>>((String value) {
@@ -30,14 +35,14 @@ class _VchTypeState extends State<VchType> {
       }).toList(),
     );
   }
-}
 
-String firstVCH(String type){
-    if(type != ""){
+  String firstVCH(String? type){
+    if(type != null){
       if(type == Type.first){
         return Type.first;
       }
         return Type[1];        
     }
   return Type[1];       
+}
 }

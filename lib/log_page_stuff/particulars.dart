@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
 class Particulars extends StatefulWidget {
-  String Title;
-  Particulars({super.key, required this.Title});
+  String? Title;
+  Particulars({super.key, this.Title});
+
+  String getParticularsText(){
+    String p = ParticularsControl.text;
+    ParticularsControl.clear();
+    return p;
+  }
 
   @override
   State<Particulars> createState() => ParticularsState();
 }
 
+TextEditingController ParticularsControl = TextEditingController();
 class ParticularsState extends State<Particulars> {
   @override
   Widget build(BuildContext context) {
@@ -15,9 +22,10 @@ class ParticularsState extends State<Particulars> {
       height: null,
       width: 300,
       child: TextField(
+        controller: ParticularsControl,
         obscureText: false,
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           labelText: InitialTitle(widget.Title),
         ),
       ),
@@ -25,10 +33,12 @@ class ParticularsState extends State<Particulars> {
   }
 }
 
-String InitialTitle(String Title){
-    if (Title != '') {
+String InitialTitle(String? Title){
+    if (Title != null) {
         return Title;
       } else {
         return 'Title';
       }
   }
+
+ 
