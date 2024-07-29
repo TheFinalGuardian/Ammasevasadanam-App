@@ -1,6 +1,6 @@
 import 'package:ammasevasadanam_app/home_page.dart';
-import 'package:ammasevasadanam_app/screens_place_holder/log_page_place_holder.dart';
-import 'package:ammasevasadanam_app/screens_place_holder/report_page_place_holder.dart';
+import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/log_page_place_holder.dart';
+import 'package:ammasevasadanam_app/place_holders/report_page_place_holder.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: const HomePage(),
       routes: {
-        "/log": (context) => const LogPagePlaceHolder(),
+        "/log": (context) => const LogPage(),
         "/home": (context) => const HomePage(),
         "/report": (context) => const ReportPagePlaceHolder(),
       },
