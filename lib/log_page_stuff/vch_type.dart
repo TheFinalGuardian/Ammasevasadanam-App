@@ -1,14 +1,16 @@
 
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 const List<String> Type = <String>["Payment", "Contra"];
-String VchVal = '';
+String vchVal = '';
 
 class VchType extends StatefulWidget {
-  String? VCH;
-   VchType({super.key, this.VCH});
+  String? vchType;
+   VchType({super.key, this.vchType});
    String getVchType(){
-    return VchVal;
+    return vchVal;
    }
 
   @override
@@ -20,11 +22,11 @@ class _VchTypeState extends State<VchType> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
-      value: firstVCH(widget.VCH),
+      value: firstVCH(widget.vchType),
       onChanged: (String? value) {
         setState(() {
-          widget.VCH = value;
-          VchVal = value!;
+          widget.vchType = value;
+          vchVal = value!;
         });
       },
       items: Type.map<DropdownMenuItem<String>>((String value) {

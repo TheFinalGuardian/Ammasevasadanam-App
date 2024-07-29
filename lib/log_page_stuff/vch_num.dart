@@ -1,26 +1,28 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class VchNum extends StatefulWidget {
-  String? VCHNUM;
-  VchNum({super.key, this.VCHNUM});
+  String? vchNumber;
+  VchNum({super.key, this.vchNumber});
 
  String getVchText(){
-    String n = VchControl.text;
-    VchControl.clear();
+    String n = vchControl.text;
+    vchControl.clear();
     return n;
   }
   @override
   State<VchNum> createState() => _VchNumState();
 }
 
-TextEditingController VchControl = TextEditingController();
+TextEditingController vchControl = TextEditingController();
 
 class _VchNumState extends State<VchNum> {
   @override
   Widget build(BuildContext context) {
-    String InitialVCHNum(String? VCHNUM){
-    if (VCHNUM != null) {
-        return VCHNUM;
+    String initialVCHNum(String? vchNum){
+    if (vchNum != null) {
+        return vchNum;
       } else {
         return 'VCH No.';
       }
@@ -28,11 +30,11 @@ class _VchNumState extends State<VchNum> {
     return SizedBox(
       width: 100,
       child: TextField(
-        controller: VchControl,
+        controller: vchControl,
         obscureText: false,
         decoration: InputDecoration(
           border: const OutlineInputBorder(),
-          labelText: InitialVCHNum(widget.VCHNUM),
+          labelText: initialVCHNum(widget.vchNumber),
         ),
       ),
     );

@@ -1,11 +1,6 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:ammasevasadanam_app/custom_tile.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/amount.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/category.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/drop_down_menu_type_of_log.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/particulars.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/vch_type.dart';
-import 'package:ammasevasadanam_app/log_page_stuff/vch_num.dart';
-import 'package:ammasevasadanam_app/page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:ammasevasadanam_app/main.dart';
 
@@ -30,7 +25,7 @@ class _SubmitState extends State<Submit> {
     }else{
     return ElevatedButton(
     onPressed: () {
-      Create(
+      create(
         "2/3/4",
         "Yogesh",
         aap.getUI().getLogPage().getThis().getLogType(),

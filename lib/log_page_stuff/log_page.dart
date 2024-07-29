@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:ammasevasadanam_app/log_page_stuff/amount.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/category.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/drop_down_menu_type_of_log.dart';
@@ -5,51 +7,50 @@ import 'package:ammasevasadanam_app/log_page_stuff/particulars.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/submit_button.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/vch_num.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/vch_type.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class LogPage extends StatefulWidget {
   bool? edit;
-  String? Type;
+  String? type;
   String? category;
-  String? Title;
-  String? VCHType;
-  String? VCHNum;
-  String? Cost;
+  String? title;
+  String? vchType;
+  String? vchNum;
+  String? cost;
 
   LogPage({super.key});
-  LogPage.edit({super.key, this.edit, this.Type, this.category, this.Title, this.VCHType, this.VCHNum, this.Cost});
+  LogPage.edit({super.key, this.edit, this.type, this.category, this.title, this.vchType, this.vchNum, this.cost});
   
-  late Amount hello = Amount(cost: Cost);
-  late VchNum namaskaram = VchNum(VCHNUM: VCHNum);
-  late VchType namaskaar = VchType(VCH: VCHType);
-  late Particulars vanakkam = Particulars(Title: Title);
-  late Group bonjour = Group(type: category);
-  late DropDownMenuTypeOfLog ola = DropDownMenuTypeOfLog(type: Type);
+  late Amount amount = Amount(cost: cost);
+  late VchNum vchNumObj = VchNum(vchNumber: vchNum);
+  late VchType vchTypeObj = VchType(vchType: vchType);
+  late Particulars particulars = Particulars(title: title);
+  late Group group = Group(type: category);
+  late DropDownMenuTypeOfLog typeOfLog = DropDownMenuTypeOfLog(type: type);
 
 
   Amount getAmountObj(){
-    return hello;
+    return amount;
   }
  
   VchNum getVCHNumObj(){
-    return namaskaram;
+    return vchNumObj;
   }
 
   VchType getVCHTypeObj(){
-    return namaskaar;
+    return vchTypeObj;
   }
 
   Particulars getTitleObj(){
-    return vanakkam;
+    return particulars;
   }
 
   Group getCategory(){
-    return bonjour;
+    return group;
   }
 
   DropDownMenuTypeOfLog getThis(){
-    return ola;
+    return typeOfLog;
   }
 
   @override

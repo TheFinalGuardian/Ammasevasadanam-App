@@ -3,25 +3,26 @@ import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
 import 'package:ammasevasadanam_app/report_page_stuff/monthly_entries.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CustomTile extends StatefulWidget {
   String date;
   String person;
 
-  String Type;
-  String Group;
-  String Title;
-  String VCHType;
-  String VCHNum;
-  String Cost;
+  String type;
+  String group;
+  String title;
+  String vchType;
+  String vchNum;
+  String cost;
 
   CustomTile(
       {super.key,
-    required this.Type,
-    required this.Group,
-    required this.Title,
-    required this.VCHType,
-    required this.VCHNum,
-    required this.Cost,
+    required this.type,
+    required this.group,
+    required this.title,
+    required this.vchType,
+    required this.vchNum,
+    required this.cost,
     required this.person,
     required this.date
       });
@@ -56,15 +57,15 @@ class _CustomTileState extends State<CustomTile> {
               ),
               Row(
                 children: [
-                  CustomText(input: ("${widget.Title}: ")),
-                  Text('₹${widget.Cost}')
+                  CustomText(input: ("${widget.title}: ")),
+                  Text('₹${widget.cost}')
                 ],
               ),
             ],
           ),
           subtitle: Text("By: ${widget.person}"),
           onTap: () {
-            Navigator.of(context).push(leftToRight(LogPage.edit(edit: true,Type: widget.Type, category: widget.Group,Title: widget.Title,VCHNum: widget.VCHNum,VCHType: widget.VCHType,Cost: widget.Cost)));
+            Navigator.of(context).push(leftToRight(LogPage.edit(edit: true,type: widget.type, category: widget.group,title: widget.title,vchNum: widget.vchNum,vchType: widget.vchType,cost: widget.cost)));
           },
         ),
       ),
@@ -90,6 +91,7 @@ class _CustomTextState extends State<CustomText> {
   }
 }
 
-void Create(String date,String person,String Type,String Group,String Title,String VCHType,String VCHNum,String Cost){
-  entries.add(CustomTile(date: date, person: person, Type: Type, Group: Group, Title: Title, VCHType: VCHType, VCHNum: VCHNum, Cost: Cost));
+void create(String date,String person,String type,String group,String title,String vchType,String vchNum,String cost){
+  entries.add(CustomTile(date: date, person: person, type: type, group: group, title: title, vchType: vchType, vchNum: vchNum, cost: cost));
 }
+

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Amount extends StatefulWidget {
   String? cost;
   Amount({super.key, this.cost});
@@ -24,12 +25,12 @@ class _AmountState extends State<Amount> {
         controller: amountControl,
         decoration: InputDecoration(
         border: const OutlineInputBorder(),
-        labelText: InitialAmount(widget.cost),
+        labelText: initialAmount(widget.cost),
         ),
       ),
     );
   }
-  String InitialAmount(String? cost){
+  String initialAmount(String? cost){
     if (cost != null) {
         return cost;
       } else {

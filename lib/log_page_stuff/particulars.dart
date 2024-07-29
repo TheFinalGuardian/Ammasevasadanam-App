@@ -1,12 +1,14 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class Particulars extends StatefulWidget {
-  String? Title;
-  Particulars({super.key, this.Title});
+  String? title;
+  Particulars({super.key, this.title});
 
   String getParticularsText(){
-    String p = ParticularsControl.text;
-    ParticularsControl.clear();
+    String p = particularsControl.text;
+    particularsControl.clear();
     return p;
   }
 
@@ -14,7 +16,7 @@ class Particulars extends StatefulWidget {
   State<Particulars> createState() => ParticularsState();
 }
 
-TextEditingController ParticularsControl = TextEditingController();
+TextEditingController particularsControl = TextEditingController();
 class ParticularsState extends State<Particulars> {
   @override
   Widget build(BuildContext context) {
@@ -22,20 +24,20 @@ class ParticularsState extends State<Particulars> {
       height: null,
       width: 300,
       child: TextField(
-        controller: ParticularsControl,
+        controller: particularsControl,
         obscureText: false,
         decoration: InputDecoration(
           border: const OutlineInputBorder(),
-          labelText: InitialTitle(widget.Title),
+          labelText: initialTitle(widget.title),
         ),
       ),
     );
   }
 }
 
-String InitialTitle(String? Title){
-    if (Title != null) {
-        return Title;
+String initialTitle(String? title){
+    if (title != null) {
+        return title;
       } else {
         return 'Title';
       }

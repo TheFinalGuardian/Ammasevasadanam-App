@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 const List<String> typeOfLogOption = <String>['Donation', 'Expense'];
-String Log = '';
+String log = '';
 
+// ignore: must_be_immutable
 class DropDownMenuTypeOfLog extends StatefulWidget {
   String? type;
   DropDownMenuTypeOfLog({super.key, this.type});
   
   String getLogType(){
-    return Log;
+    return log;
   }
 
   @override
@@ -25,7 +26,7 @@ class _DropDownMenuTypeOfLogState extends State<DropDownMenuTypeOfLog> {
         // This is called when the user selects an item.
         setState(() {
           widget.type = value!;
-          Log = value!;
+          log = value;
         });
       },
       items: typeOfLogOption.map<DropdownMenuItem<String>>((String value) {

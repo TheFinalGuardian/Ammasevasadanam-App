@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:ammasevasadanam_app/home_page.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
 import 'package:ammasevasadanam_app/menu_bottom.dart';
@@ -7,11 +9,11 @@ import 'package:flutter/material.dart';
 class PageViewVersion extends StatefulWidget {
   PageViewVersion({super.key});
 
-  LogPage logpage = new LogPage();
-  HomePage homepage = new HomePage();
-  ReportPage reportpage = new ReportPage();
+  LogPage logpage = LogPage();
+  HomePage homepage = const HomePage();
+  ReportPage reportpage = const ReportPage();
 
-  List<Widget> pages = [LogPage(), HomePage(), ReportPage()];
+  List<Widget> pages = [LogPage(), const HomePage(), const ReportPage()];
 
   LogPage getLogPage(){
     return logpage;
@@ -32,6 +34,7 @@ int pageChanged = 1;
 PageController pageController = PageController(initialPage: 1);
 
 class _PageViewVersionState extends State<PageViewVersion> {
+
   void changePage(int x) {
     pageController.jumpToPage(x);
     track = x;
