@@ -12,6 +12,7 @@ class ReportPage extends StatelessWidget {
           title: const Text("Report Page"),
         ),
         body: const SingleChildScrollView(
+          physics:  ClampingScrollPhysics(),
             child: Stack(children: <Widget>[
           Column(
               mainAxisAlignment: MainAxisAlignment.start,

@@ -1,4 +1,5 @@
-import 'package:ammasevasadanam_app/log_page_stuff/added_monthly_entries_list.dart';
+// ignore_for_file: must_be_immutable
+
 import 'package:ammasevasadanam_app/log_page_stuff/amount.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/category.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/drop_down_menu_type_of_log.dart';
@@ -8,8 +9,55 @@ import 'package:ammasevasadanam_app/log_page_stuff/vch_num.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/vch_type.dart';
 import 'package:flutter/material.dart';
 
-class LogPage extends StatelessWidget {
-  const LogPage({super.key});
+class LogPage extends StatefulWidget {
+  bool? edit;
+  String? type;
+  String? category;
+  String? title;
+  String? vchType;
+  String? vchNum;
+  String? cost;
+
+  LogPage({super.key});
+  LogPage.edit({super.key, this.edit, this.type, this.category, this.title, this.vchType, this.vchNum, this.cost});
+  
+  late Amount amount = Amount(cost: cost);
+  late VchNum vchNumObj = VchNum(vchNumber: vchNum);
+  late VchType vchTypeObj = VchType(vchType: vchType);
+  late Particulars particulars = Particulars(title: title);
+  late Group group = Group(type: category);
+  late DropDownMenuTypeOfLog typeOfLog = DropDownMenuTypeOfLog(type: type);
+
+
+  Amount getAmountObj(){
+    return amount;
+  }
+ 
+  VchNum getVCHNumObj(){
+    return vchNumObj;
+  }
+
+  VchType getVCHTypeObj(){
+    return vchTypeObj;
+  }
+
+  Particulars getTitleObj(){
+    return particulars;
+  }
+
+  Group getCategory(){
+    return group;
+  }
+
+  DropDownMenuTypeOfLog getThis(){
+    return typeOfLog;
+  }
+
+  @override
+  State<LogPage> createState() => _LogPageState();
+}
+
+class _LogPageState extends State<LogPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +65,8 @@ class LogPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Log Page'),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
           child: Stack(children: <Widget>[
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -25,63 +74,59 @@ class LogPage extends StatelessWidget {
           children: [
             Row(
               children: [
-                SizedBox(width: 20),
-                Text("Select Type of Log: "),
-                SizedBox(
+                const SizedBox(width: 20),
+                const Text("Select Type of Log: "),
+                const SizedBox(
                   width: 10,
                 ),
-                DropDownMenuTypeOfLog(),
+                widget.getThis(),
               ],
             ),
             Padding(
-              padding: EdgeInsets.only(left: 20.0, top: 10.0),
-              child: Category(),
+              padding: const EdgeInsets.only(left: 20.0, top: 10.0),
+              child: widget.getCategory(),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 20.0, top: 10.0),
-              child: Particulars(),
+              padding: const EdgeInsets.only(left: 20.0, top: 10.0),
+              child: widget.getTitleObj(),
             ),
             Row(
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(left: 20.0, top: 10.0),
                   child: Text("VCH Type: "),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                  child: VchType(),
+                  padding: const EdgeInsets.only(left: 20.0, top: 10.0),
+                  child: widget.getVCHTypeObj(),
                 ),
               ],
             ),
             Padding(
-              padding: EdgeInsets.only(left: 48.0, top: 10.0),
-              child: VchNum(),
+              padding: const EdgeInsets.only(left: 48.0, top: 10.0),
+              child: widget.getVCHNumObj(),
             ),
             Row(
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(left: 20.0, top: 10.0),
                   child: Text("₹"),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                  child: Amount(),
+                  padding: const EdgeInsets.only(left: 20.0, top: 10.0),
+                  child: widget.getAmountObj(),
                 ),
               ],
             ),
             Center(
               child: Padding(
-                padding: EdgeInsets.only(top: 25.0),
-                child: Submit(),
+                padding: const EdgeInsets.only(top: 25.0),
+                child: Submit(edit: widget.edit),
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 20.0, top: 10.0),
               child: Text("Edit Added Entries:"),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 20.0, right: 20, top: 10.0),
-              child: AddedMonthlyEntriesList(),
             ),
           ],
         ),

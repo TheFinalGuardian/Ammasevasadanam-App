@@ -1,4 +1,3 @@
-import 'package:ammasevasadanam_app/custom_tile.dart';
 import 'package:flutter/material.dart';
 
 class AddedMonthlyEntriesList extends StatefulWidget {
@@ -14,9 +13,9 @@ class _AddedMonthlyEntriesListState extends State<AddedMonthlyEntriesList> {
   Widget build(BuildContext context) {
     return ListView(
       shrinkWrap: true,
+      physics: const ClampingScrollPhysics(),
       children: const <Widget>[
-        CustomTile(
-            date: '6/1/24', tileName: "Log", person: "Vikram", cost: '100'),
+        
       ],
     );
   }

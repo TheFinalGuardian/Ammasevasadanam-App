@@ -7,23 +7,30 @@ const List<String> typeOfCategory = <String>[
   'SBI -33480143480'
 ];
 
-class Category extends StatefulWidget {
-  const Category({super.key});
-
+String categories = '';
+// ignore: must_be_immutable
+class Group extends StatefulWidget {
+  String? type;
+  Group({super.key, this.type});
+  String getCategoryType(){
+    return categories;
+   }
   @override
-  State<Category> createState() => _CategoryState();
+  State<Group> createState() => _CategoryState();
 }
 
-class _CategoryState extends State<Category> {
+class _CategoryState extends State<Group> {
+
   String? cSelect;
   @override
   Widget build(BuildContext context) {
     return DropdownMenu<String>(
-      initialSelection: typeOfCategory.first,
+      initialSelection: initialSelection(widget.type),
       onSelected: (String? value) {
         // This is called when the user selects an item.
         setState(() {
           cSelect = value!;
+          categories = value;
         });
       },
       dropdownMenuEntries:
@@ -32,4 +39,16 @@ class _CategoryState extends State<Category> {
       }).toList(),
     );
   }
+
+String initialSelection(String? type){
+  if (widget.type != null) {
+        for (int x = 0; x < typeOfCategory.length; x++){
+          if (widget.type == typeOfCategory[x]){
+            return typeOfCategory[x];
+          }
+        }
+  }
+  return typeOfCategory.first;
+}
+
 }

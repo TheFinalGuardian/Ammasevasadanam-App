@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:ammasevasadanam_app/home_page.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
 import 'package:ammasevasadanam_app/menu_bottom.dart';
@@ -5,18 +7,34 @@ import 'package:ammasevasadanam_app/report_page_stuff/report_page.dart';
 import 'package:flutter/material.dart';
 
 class PageViewVersion extends StatefulWidget {
-  const PageViewVersion({super.key});
+  PageViewVersion({super.key});
 
+  LogPage logpage = LogPage();
+  HomePage homepage = const HomePage();
+  ReportPage reportpage = const ReportPage();
+
+  List<Widget> pages = [LogPage(), const HomePage(), const ReportPage()];
+
+  LogPage getLogPage(){
+    return logpage;
+  }
+
+  HomePage getHomePage(){
+    return homepage;
+  }
+
+  ReportPage getReportPage(){
+    return reportpage;
+  }
+ 
   @override
   State<PageViewVersion> createState() => _PageViewVersionState();
 }
-
 int pageChanged = 1;
-
-List<Widget> pages = [const LogPage(), const HomePage(), const ReportPage()];
 PageController pageController = PageController(initialPage: 1);
 
 class _PageViewVersionState extends State<PageViewVersion> {
+
   void changePage(int x) {
     pageController.jumpToPage(x);
     track = x;
@@ -43,7 +61,7 @@ class _PageViewVersionState extends State<PageViewVersion> {
                     );
                   }
                 },
-                child: pages[0]),
+                child: widget.logpage),
             GestureDetector(
                 onPanUpdate: (details) {
                   if (details.delta.dy != 0) {
@@ -53,7 +71,7 @@ class _PageViewVersionState extends State<PageViewVersion> {
                     );
                   }
                 },
-                child: pages[1]),
+                child: widget.homepage),
             GestureDetector(
                 onPanUpdate: (details) {
                   if (details.delta.dy != 0) {
@@ -63,7 +81,7 @@ class _PageViewVersionState extends State<PageViewVersion> {
                     );
                   }
                 },
-                child: pages[2]),
+                child: widget.reportpage),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
