@@ -124,10 +124,6 @@ class _LogPageState extends State<LogPage> {
                 child: Submit(edit: widget.edit),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 20.0, top: 10.0),
-              child: Text("Edit Added Entries:"),
-            ),
           ],
         ),
       ])),

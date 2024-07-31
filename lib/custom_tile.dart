@@ -1,9 +1,15 @@
 import 'package:ammasevasadanam_app/animations/transition_animation_folder/left_to_right.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
+import 'package:ammasevasadanam_app/log_page_stuff/submit_button.dart';
 import 'package:ammasevasadanam_app/report_page_stuff/monthly_entries.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
+int tally = -1;
+int getTally(){
+  tally++;
+  return tally;
+}
 class CustomTile extends StatefulWidget {
   String date;
   String person;
@@ -14,6 +20,7 @@ class CustomTile extends StatefulWidget {
   String vchType;
   String vchNum;
   String cost;
+  int numID;
 
   CustomTile(
       {super.key,
@@ -24,14 +31,30 @@ class CustomTile extends StatefulWidget {
     required this.vchNum,
     required this.cost,
     required this.person,
-    required this.date
+    required this.date,
+    required this.numID,
       });
 
+  
+
   @override
-  State<CustomTile> createState() => _CustomTileState();
+  State<CustomTile> createState() => CustomTileState();
 }
 
-class _CustomTileState extends State<CustomTile> {
+class CustomTileState extends State<CustomTile> {
+  void update(String date,String person,String type,String group,String title,String vchType,String vchNum,String cost){
+    setState(() {
+      widget.date = date;
+      widget.person = person;
+      widget.type = type;
+      widget.group = group;
+      widget.title = title;
+      widget.vchType = vchType;
+      widget.vchNum = vchNum;
+      widget.cost = cost;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -65,6 +88,7 @@ class _CustomTileState extends State<CustomTile> {
           ),
           subtitle: Text("By: ${widget.person}"),
           onTap: () {
+            staticTrack = widget.numID;
             Navigator.of(context).push(leftToRight(LogPage.edit(edit: true,type: widget.type, category: widget.group,title: widget.title,vchNum: widget.vchNum,vchType: widget.vchType,cost: widget.cost)));
           },
         ),
@@ -86,12 +110,13 @@ class _CustomTextState extends State<CustomText> {
   Widget build(BuildContext context) {
     return Text(widget.input,
         style: const TextStyle(
-          fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.bold,
         ));
   }
 }
 
-void create(String date,String person,String type,String group,String title,String vchType,String vchNum,String cost){
-  entries.add(CustomTile(date: date, person: person, type: type, group: group, title: title, vchType: vchType, vchNum: vchNum, cost: cost));
+void create(String date,String person,String type,String group,String title,String vchType,String vchNum,String cost, int count){
+  GlobalKey<CustomTileState> globalKey2 = GlobalKey<CustomTileState>();
+  entries.add(CustomTile(key: globalKey2, date: date, person: person, type: type, group: group, title: title, vchType: vchType, vchNum: vchNum, cost: cost, numID: count));
+  entryKeys.add(globalKey2);
 }
-

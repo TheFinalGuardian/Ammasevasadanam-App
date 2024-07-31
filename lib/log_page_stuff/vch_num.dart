@@ -29,15 +29,21 @@ class _VchNumState extends State<VchNum> {
   }
     return SizedBox(
       width: 100,
-      child: TextField(
-        controller: vchControl,
+      child: TextFormField(
+        controller: vchControl..text = setInitialVchNum(widget.vchNumber),
         obscureText: false,
-        decoration: InputDecoration(
-          border: const OutlineInputBorder(),
-          labelText: initialVCHNum(widget.vchNumber),
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: 'VCH Num',
         ),
       ),
     );
   }
 }
-  
+String setInitialVchNum(String? vchNum) {
+      if (vchNum != null) {
+        return vchNum;
+      } else {
+        return '';
+      }
+}

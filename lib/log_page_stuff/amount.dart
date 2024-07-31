@@ -17,26 +17,35 @@ class Amount extends StatefulWidget {
 TextEditingController amountControl = TextEditingController();
 
 class _AmountState extends State<Amount> {
+  void setToNull(){
+    setState(() {
+      widget.cost = null;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 100,
       child: TextField(
-        controller: amountControl,
+        controller: amountControl..text = setInitialAmount(widget.cost),
         decoration: InputDecoration(
-        border: const OutlineInputBorder(),
-        labelText: initialAmount(widget.cost),
+          border: const OutlineInputBorder(),
+          labelText: initialAmount(widget.cost),
         ),
       ),
     );
   }
   String initialAmount(String? cost){
+      return 'Amount';
+  }
+
+  String setInitialAmount(String? cost){
     if (cost != null) {
         return cost;
       } else {
-        return 'Amount';
-      }
+        return '';
+      }        
   }
 }
-
 

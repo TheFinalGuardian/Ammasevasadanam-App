@@ -23,8 +23,8 @@ class ParticularsState extends State<Particulars> {
     return SizedBox(
       height: null,
       width: 300,
-      child: TextField(
-        controller: particularsControl,
+      child: TextFormField(
+        controller: particularsControl..text = setInitialTitle(widget.title),
         obscureText: false,
         decoration: InputDecoration(
           border: const OutlineInputBorder(),
@@ -33,14 +33,17 @@ class ParticularsState extends State<Particulars> {
       ),
     );
   }
-}
+
 
 String initialTitle(String? title){
+    return 'Title';
+  }
+
+ String setInitialTitle(String? title){
     if (title != null) {
         return title;
       } else {
-        return 'Title';
+        return '';
       }
-  }
-
- 
+    }
+}
