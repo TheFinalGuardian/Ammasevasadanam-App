@@ -59,42 +59,46 @@ class CustomTileState extends State<CustomTile> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(6.0),
+      padding: const EdgeInsets.all(2.0),
       child: Material(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: const BorderSide(color: Colors.black),
-          ),
-        child: ListTile(
-          title: Column(
-            children: [
-              Row(
+          /*shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+              side: const BorderSide(color: Colors.black),
+            ),*/
+          child: Card(
+            color: Colors.pink[50],
+            elevation: 10,
+            child: ListTile(
+              title: Column(
                 children: [
-                  Text(
-                    widget.date,
-                    style: const TextStyle(
-                      fontStyle: FontStyle.italic,
-                      fontSize: 14,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        widget.date,
+                        style: const TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      CustomText(input: ("${widget.title}: ")),
+                      Text('₹${widget.cost}')
+                    ],
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  CustomText(input: ("${widget.title}: ")),
-                  Text('₹${widget.cost}')
-                ],
-              ),
-            ],
+              subtitle: Text("By: ${widget.person}"),
+              onTap: () {
+                staticTrack = widget.numID;
+                Navigator.of(context).push(leftToRight(LogPage.edit(edit: true,type: widget.type, category: widget.group,title: widget.title,vchNum: widget.vchNum,vchType: widget.vchType,cost: widget.cost)));
+              },
+            ),
           ),
-          subtitle: Text("By: ${widget.person}"),
-          onTap: () {
-            staticTrack = widget.numID;
-            Navigator.of(context).push(leftToRight(LogPage.edit(edit: true,type: widget.type, category: widget.group,title: widget.title,vchNum: widget.vchNum,vchType: widget.vchType,cost: widget.cost)));
-          },
         ),
-      ),
-    );
+      );
   }
 }
 
