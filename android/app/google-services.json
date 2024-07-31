@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "284141252527",
+    "project_id": "ammasevasadanam-app-27770",
+    "storage_bucket": "ammasevasadanam-app-27770.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284141252527:android:356579a859072c2c1f495a",
+        "android_client_info": {
+          "package_name": "com.example.ammasevasadanam_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9nI6-AFs41oo6B-VhjqfSvtBdEVMdM4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

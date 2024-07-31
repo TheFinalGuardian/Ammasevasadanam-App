@@ -12,6 +12,10 @@ class Particulars extends StatefulWidget {
     return p;
   }
 
+  String getParticularsTest(){
+    return particularsControl.text;
+  }
+
   @override
   State<Particulars> createState() => ParticularsState();
 }

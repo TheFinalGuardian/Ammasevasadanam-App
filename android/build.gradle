@@ -1,3 +1,8 @@
+plugins {
+    id 'com.google.gms.google-services' version '4.4.2' apply false
+}
+
+// ext.kotlin_version = '1.7.10' 
 allprojects {
     repositories {
         google()

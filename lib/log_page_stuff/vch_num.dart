@@ -11,6 +11,10 @@ class VchNum extends StatefulWidget {
     vchControl.clear();
     return n;
   }
+
+  String getVchTest(){
+      return vchControl.text;
+  }
   @override
   State<VchNum> createState() => _VchNumState();
 }

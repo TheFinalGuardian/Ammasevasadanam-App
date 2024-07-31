@@ -10,6 +10,11 @@ class Amount extends StatefulWidget {
     amountControl.clear();
     return t;
   }
+
+  String getAmountTest(){
+    return amountControl.text;
+  }
+  
   @override
   State<Amount> createState() => _AmountState();
 }

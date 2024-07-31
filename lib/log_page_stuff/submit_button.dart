@@ -20,7 +20,8 @@ class _SubmitState extends State<Submit> {
     if(widget.edit != null){
       return ElevatedButton(
       onPressed: () {
-        entryKeys[staticTrack].currentState?.update(
+        if (filled() == true){
+          entryKeys[staticTrack].currentState?.update(
           "2/3/4", 
           "Yogesh", 
           aap.getUI().getLogPage().getThis().getLogType(), 
@@ -29,14 +30,16 @@ class _SubmitState extends State<Submit> {
           aap.getUI().getLogPage().getVCHTypeObj().getVchType(),
           aap.getUI().getLogPage().getVCHNumObj().getVchText(),
           aap.getUI().getLogPage().getAmountObj().getAmountText(),
-        );
+          );
+        }
         Navigator.of(context).pop();
       },
       child: const Text("Save"));
     }else{
     return ElevatedButton(
     onPressed: () {
-      create(
+      if(filled() == true){
+        create(
         "2/3/4",
         "Yogesh",
         aap.getUI().getLogPage().getThis().getLogType(),
@@ -46,9 +49,21 @@ class _SubmitState extends State<Submit> {
         aap.getUI().getLogPage().getVCHNumObj().getVchText(),
         aap.getUI().getLogPage().getAmountObj().getAmountText(),
         getTally()
-      );
+        );
+      }
+        
     }, 
     child: const Text("Submit"));
     }
   }
+}
+
+bool filled(){
+  String title = aap.getUI().getLogPage().getTitleObj().getParticularsTest();
+  String vchText = aap.getUI().getLogPage().getVCHNumObj().getVchTest();
+  String amount = aap.getUI().getLogPage().getAmountObj().getAmountTest();
+  if ((title == '')||(vchText == '')||(amount == '')){
+    return false;
+  }
+  return true;
 }
