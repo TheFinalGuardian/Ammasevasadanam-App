@@ -20,13 +20,6 @@ TextEditingController vchControl = TextEditingController();
 class _VchNumState extends State<VchNum> {
   @override
   Widget build(BuildContext context) {
-    String initialVCHNum(String? vchNum){
-    if (vchNum != null) {
-        return vchNum;
-      } else {
-        return 'VCH No.';
-      }
-  }
     return SizedBox(
       width: 100,
       child: TextFormField(

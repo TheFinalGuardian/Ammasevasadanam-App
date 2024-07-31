@@ -1,10 +1,11 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:ammasevasadanam_app/animations/transition_animation_folder/left_to_right.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/submit_button.dart';
 import 'package:ammasevasadanam_app/report_page_stuff/monthly_entries.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 int tally = -1;
 int getTally(){
   tally++;
