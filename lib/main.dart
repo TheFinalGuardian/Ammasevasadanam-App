@@ -1,21 +1,28 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:ammasevasadanam_app/page_view.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-App aap = App();
-void main() {
-  runApp(App());
+App app = App();
+
+App getApp() {
+  return app;
 }
-App getAAP(){
-  return aap;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FirebaseFirestore.instance.settings = const Settings(persistenceEnabled: true);
+  runApp(getApp());
 }
 
 class App extends StatelessWidget {
   App({super.key});
   PageViewVersion pages3 = PageViewVersion();
 
-  PageViewVersion getUI(){
+  PageViewVersion getUI() {
     return pages3;
   }
 

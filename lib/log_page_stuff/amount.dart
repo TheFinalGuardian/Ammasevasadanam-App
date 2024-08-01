@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class Amount extends StatefulWidget {
-  String? cost;
+  int? cost;
   Amount({super.key, this.cost});
 
   String getAmountText(){
@@ -30,9 +30,9 @@ class _AmountState extends State<Amount> {
       ),
     );
   }
-  String initialAmount(String? cost){
+  String initialAmount(int? cost){
     if (cost != null) {
-        return cost;
+        return "$cost";
       } else {
         return 'Amount';
       }

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 class VchNum extends StatefulWidget {
-  String? vchNumber;
+  int? vchNumber;
   VchNum({super.key, this.vchNumber});
 
  String getVchText(){
@@ -20,9 +20,9 @@ TextEditingController vchControl = TextEditingController();
 class _VchNumState extends State<VchNum> {
   @override
   Widget build(BuildContext context) {
-    String initialVCHNum(String? vchNum){
+    String initialVCHNum(int? vchNum){
     if (vchNum != null) {
-        return vchNum;
+        return "$vchNum";
       } else {
         return 'VCH No.';
       }

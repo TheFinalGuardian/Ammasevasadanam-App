@@ -15,43 +15,18 @@ class LogPage extends StatefulWidget {
   String? category;
   String? title;
   String? vchType;
-  String? vchNum;
-  String? cost;
+  int? vchNum;
+  int? cost;
 
   LogPage({super.key});
   LogPage.edit({super.key, this.edit, this.type, this.category, this.title, this.vchType, this.vchNum, this.cost});
   
   late Amount amount = Amount(cost: cost);
-  late VchNum vchNumObj = VchNum(vchNumber: vchNum);
-  late VchType vchTypeObj = VchType(vchType: vchType);
+  late VchNum vchNumUI = VchNum(vchNumber: vchNum);
+  late VchType vchTypeUI = VchType(vchType: vchType);
   late Particulars particulars = Particulars(title: title);
   late Group group = Group(type: category);
   late DropDownMenuTypeOfLog typeOfLog = DropDownMenuTypeOfLog(type: type);
-
-
-  Amount getAmountObj(){
-    return amount;
-  }
- 
-  VchNum getVCHNumObj(){
-    return vchNumObj;
-  }
-
-  VchType getVCHTypeObj(){
-    return vchTypeObj;
-  }
-
-  Particulars getTitleObj(){
-    return particulars;
-  }
-
-  Group getCategory(){
-    return group;
-  }
-
-  DropDownMenuTypeOfLog getThis(){
-    return typeOfLog;
-  }
 
   @override
   State<LogPage> createState() => _LogPageState();
@@ -79,16 +54,16 @@ class _LogPageState extends State<LogPage> {
                 const SizedBox(
                   width: 10,
                 ),
-                widget.getThis(),
+                widget.typeOfLog,
               ],
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20.0, top: 10.0),
-              child: widget.getCategory(),
+              child: widget.group,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20.0, top: 10.0),
-              child: widget.getTitleObj(),
+              child: widget.particulars,
             ),
             Row(
               children: [
@@ -98,13 +73,13 @@ class _LogPageState extends State<LogPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0, top: 10.0),
-                  child: widget.getVCHTypeObj(),
+                  child: widget.vchTypeUI,
                 ),
               ],
             ),
             Padding(
               padding: const EdgeInsets.only(left: 48.0, top: 10.0),
-              child: widget.getVCHNumObj(),
+              child: widget.vchNumUI,
             ),
             Row(
               children: [
@@ -114,7 +89,7 @@ class _LogPageState extends State<LogPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0, top: 10.0),
-                  child: widget.getAmountObj(),
+                  child: widget.amount,
                 ),
               ],
             ),

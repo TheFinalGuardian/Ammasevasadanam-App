@@ -15,28 +15,26 @@ class Submit extends StatefulWidget {
 class _SubmitState extends State<Submit> {
   @override
   Widget build(BuildContext context) {
-
-    if(widget.edit != null){
+    if (widget.edit != null) {
       return ElevatedButton(
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-      child: const Text("Save"));
-    }else{
-    return ElevatedButton(
-    onPressed: () {
-      create(
-        "2/3/4",
-        "Yogesh",
-        aap.getUI().getLogPage().getThis().getLogType(),
-        aap.getUI().getLogPage().getCategory().getCategoryType(),
-        aap.getUI().getLogPage().getTitleObj().getParticularsText(),
-        aap.getUI().getLogPage().getVCHTypeObj().getVchType(),
-        aap.getUI().getLogPage().getVCHNumObj().getVchText(),
-        aap.getUI().getLogPage().getAmountObj().getAmountText()
-      );
-    }, 
-    child: const Text("Submit"));
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text("Save"));
+    } else {
+      return ElevatedButton(
+          onPressed: () {
+            create(
+                "2/3/4",
+                "Yogesh",
+                app.getUI().getLogPage().typeOfLog.getLogType(),
+                app.getUI().getLogPage().group.getCategoryType(),
+                app.getUI().getLogPage().particulars.getParticularsText(),
+                app.getUI().getLogPage().vchTypeUI.getVchType(),
+                app.getUI().getLogPage().vchNumUI.getVchText(),
+                app.getUI().getLogPage().amount.getAmountText());
+          },
+          child: const Text("Submit"));
     }
   }
 }
