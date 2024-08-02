@@ -31,8 +31,8 @@ class _SubmitState extends State<Submit> {
                 app.getUI().getLogPage().group.getCategoryType(),
                 app.getUI().getLogPage().particulars.getParticularsText(),
                 app.getUI().getLogPage().vchTypeUI.getVchType(),
-                app.getUI().getLogPage().vchNumUI.getVchText(),
-                app.getUI().getLogPage().amount.getAmountText());
+                app.getUI().getLogPage().vchNumUI.getVchText() as int,
+                app.getUI().getLogPage().amount.getAmountText() as int);
           },
           child: const Text("Submit"));
     }

@@ -3,6 +3,8 @@
 
 import 'package:flutter/material.dart';
 
+// @TODO: convert list to enum
+
 const List<String> Type = <String>["Payment", "Contra"];
 String vchVal = '';
 
