@@ -14,9 +14,7 @@ class _AddedMonthlyEntriesListState extends State<AddedMonthlyEntriesList> {
     return ListView(
       shrinkWrap: true,
       physics: const ClampingScrollPhysics(),
-      children: const <Widget>[
-        
-      ],
+      children: const <Widget>[],
     );
   }
 }

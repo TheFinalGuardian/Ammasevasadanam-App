@@ -65,7 +65,6 @@ class _CustomTileState extends State<CustomTile> {
           subtitle: Text("By: ${widget.person}"),
           onTap: () {
             Navigator.of(context).push(leftToRight(LogPage.forEdit(
-                edit: true,
                 type: widget.type,
                 category: widget.group,
                 title: widget.title,

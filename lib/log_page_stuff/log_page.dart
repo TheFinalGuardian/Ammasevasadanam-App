@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:ammasevasadanam_app/firestore/log_data.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/amount.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/category.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/drop_down_menu_type_of_log.dart';
@@ -8,28 +9,34 @@ import 'package:ammasevasadanam_app/log_page_stuff/submit_button.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/vch_num.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/vch_type.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 // @TODO: replace foredit constructor with from data taking data object as parameter
 
 class LogPage extends StatefulWidget {
-  bool? edit;
+  bool edit;
+  bool error;
   String? type;
   String? category;
   String? title;
   String? vchType;
   int? vchNum;
   int? cost;
+  late Data data;
 
-  LogPage({super.key});
+  LogPage({super.key})
+      : edit = false,
+        error = false;
   LogPage.forEdit(
       {super.key,
-      this.edit,
       this.type,
       this.category,
       this.title,
       this.vchType,
       this.vchNum,
-      this.cost});
+      this.cost})
+      : edit = true,
+        error = false;
 
   late Amount amount = Amount(cost: cost);
   late VchNum vchNumUI = VchNum(vchNumber: vchNum);
@@ -37,14 +44,53 @@ class LogPage extends StatefulWidget {
   late Particulars particulars = Particulars(title: title);
   late Group group = Group(type: category);
   late DropDownMenuTypeOfLog typeOfLog = DropDownMenuTypeOfLog(type: type);
+  late Submit submit = Submit(edit: edit, parent: this);
+  late _LogPageState _state;
 
   @override
-  State<LogPage> createState() => _LogPageState();
+  // ignore: no_logic_in_create_state
+  State<LogPage> createState() => _state = _LogPageState();
+
+  bool fillValues() {
+    try {
+      type = typeOfLog.getLogType();
+      category = group.getCategoryType();
+      title = particulars.getParticularsText();
+      vchType = vchTypeUI.getVchType();
+      vchNum = vchNumUI.getVchNum();
+      cost = amount.getAmount();
+    } on Exception catch (_) {
+      _state.error();
+      return false;
+    }
+    if (type == null ||
+        category == null ||
+        title == null ||
+        vchType == null ||
+        vchNum == null ||
+        cost == null) {
+      _state.error();
+      return false;
+    }
+    error = false;
+    return true;
+  }
+
+  void clearValues() {
+    amount.clear();
+    vchNumUI.clear();
+    particulars.clear();
+  }
 }
 
 class _LogPageState extends State<LogPage> {
   @override
   Widget build(BuildContext context) {
+    if (widget.error) {
+      SchedulerBinding.instance
+          .scheduleFrameCallback((timestamp) => errorDialog(context));
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Log Page'),
@@ -105,7 +151,7 @@ class _LogPageState extends State<LogPage> {
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 25.0),
-                    child: Submit(edit: widget.edit),
+                    child: widget.submit,
                   ),
                 ),
                 const Padding(
@@ -116,5 +162,22 @@ class _LogPageState extends State<LogPage> {
             ),
           ])),
     );
+  }
+
+  Future<dynamic> errorDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (_) => const AlertDialog(
+            title: Text("Error!"),
+            content: Text(
+                "Values improperly filled. Please check your inputs and resubmit."),
+            elevation: 15,
+            backgroundColor: Colors.red,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)))));
+  }
+
+  void error() {
+    setState(() => widget.error = true);
   }
 }

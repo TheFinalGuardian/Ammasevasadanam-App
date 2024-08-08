@@ -6,12 +6,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-App app = App();
-
-App getApp() {
-  return app;
-}
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -19,7 +13,7 @@ void main() async {
       options: DefaultFirebaseOptions.currentPlatform);
   FirebaseFirestore.instance.settings =
       const Settings(persistenceEnabled: true);
-  runApp(getApp());
+  runApp(App());
 }
 
 class App extends StatelessWidget {

@@ -1,4 +1,3 @@
-
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
@@ -10,10 +9,10 @@ String vchVal = '';
 
 class VchType extends StatefulWidget {
   String? vchType;
-   VchType({super.key, this.vchType});
-   String getVchType(){
+  VchType({super.key, this.vchType});
+  String getVchType() {
     return vchVal;
-   }
+  }
 
   @override
   State<VchType> createState() => _VchTypeState();
@@ -40,13 +39,13 @@ class _VchTypeState extends State<VchType> {
     );
   }
 
-  String firstVCH(String? type){
-    if(type != null){
-      if(type == Type.first){
+  String firstVCH(String? type) {
+    if (type != null) {
+      if (type == Type.first) {
         return Type.first;
       }
-        return Type[1];        
+      return Type[1];
     }
-  return Type[1];       
-}
+    return Type[1];
+  }
 }

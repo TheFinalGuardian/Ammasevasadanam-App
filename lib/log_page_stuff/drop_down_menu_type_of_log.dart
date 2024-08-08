@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// @TODO: convert list to enum
 const List<String> typeOfLogOption = <String>['Donation', 'Expense'];
 String log = '';
 
@@ -7,8 +8,8 @@ String log = '';
 class DropDownMenuTypeOfLog extends StatefulWidget {
   String? type;
   DropDownMenuTypeOfLog({super.key, this.type});
-  
-  String getLogType(){
+
+  String getLogType() {
     return log;
   }
 
@@ -36,17 +37,15 @@ class _DropDownMenuTypeOfLogState extends State<DropDownMenuTypeOfLog> {
         );
       }).toList(),
     );
-
-    
   }
 }
-String firstSelect(String? type){
-    if(type != null){
-      if(type == typeOfLogOption.first){
-        return typeOfLogOption.first;
-      }
-        return typeOfLogOption[1];        
-    }
-  return typeOfLogOption[1];       
-}
 
+String firstSelect(String? type) {
+  if (type != null) {
+    if (type == typeOfLogOption.first) {
+      return typeOfLogOption.first;
+    }
+    return typeOfLogOption[1];
+  }
+  return typeOfLogOption[1];
+}

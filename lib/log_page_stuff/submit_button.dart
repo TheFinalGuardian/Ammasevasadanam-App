@@ -1,12 +1,14 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:ammasevasadanam_app/custom_tile.dart';
+import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
 import 'package:flutter/material.dart';
-import 'package:ammasevasadanam_app/main.dart';
 
 class Submit extends StatefulWidget {
-  bool? edit;
-  Submit({super.key, this.edit});
+  bool edit;
+  LogPage parent;
+
+  Submit({super.key, this.edit = false, required this.parent});
 
   @override
   State<Submit> createState() => _SubmitState();
@@ -15,7 +17,7 @@ class Submit extends StatefulWidget {
 class _SubmitState extends State<Submit> {
   @override
   Widget build(BuildContext context) {
-    if (widget.edit != null) {
+    if (widget.edit) {
       return ElevatedButton(
           onPressed: () {
             Navigator.of(context).pop();
@@ -24,15 +26,22 @@ class _SubmitState extends State<Submit> {
     } else {
       return ElevatedButton(
           onPressed: () {
+            bool completed = widget.parent.fillValues();
+            if (!completed) {
+              return;
+            }
+
             create(
                 "2/3/4",
                 "Yogesh",
-                app.getUI().getLogPage().typeOfLog.getLogType(),
-                app.getUI().getLogPage().group.getCategoryType(),
-                app.getUI().getLogPage().particulars.getParticularsText(),
-                app.getUI().getLogPage().vchTypeUI.getVchType(),
-                app.getUI().getLogPage().vchNumUI.getVchText() as int,
-                app.getUI().getLogPage().amount.getAmountText() as int);
+                widget.parent.typeOfLog.getLogType(),
+                widget.parent.group.getCategoryType(),
+                widget.parent.particulars.getParticularsText(),
+                widget.parent.vchTypeUI.getVchType(),
+                widget.parent.vchNumUI.getVchNum(),
+                widget.parent.amount.getAmount());
+            
+            widget.parent.clearValues();
           },
           child: const Text("Submit"));
     }

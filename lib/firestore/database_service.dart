@@ -9,7 +9,8 @@ class DatabaseService {
 
   DatabaseService() {
     _logRef = _firestore.collection(LOG_PATH).withConverter<Data>(
-        fromFirestore: (snapshots, _) => Data.fromJson(snapshots.data()!),
+        fromFirestore: (snapshots, _) =>
+            Data.fromJson(snapshots.data()!, snapshots.id),
         toFirestore: (data, _) => data.toJson());
   }
 
@@ -20,8 +21,7 @@ class DatabaseService {
   Future<Data> getLog(String dataId) async =>
       (await _logRef.doc(dataId).get()).data() as Data;
 
-  void updateLog(String dataId, Data data) =>
-      _logRef.doc(dataId).update(data.toJson());
+  void updateLog(Data data) => _logRef.doc(data.id).update(data.toJson());
 
   void removeLog(String dataId) => _logRef.doc(dataId).delete();
 }
