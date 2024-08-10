@@ -5,27 +5,27 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 // @TODO: Add edited on (timestamp) and edited by (string) properties and creation date and transaction date properties (timestamps) to both firebase and the data
 
 class Data {
-  late int amount;
-  late String by;
-  late bool isDonation;
-  late String particularDesc;
-  late String particularTitle;
-  late Timestamp time;
-  late int vchNo;
-  late String vchType;
+  int amount;
+  String by;
+  bool isDonation;
+  String particularDesc;
+  String particularTitle;
+  Timestamp time;
+  int vchNo;
+  String vchType;
   String? id;
   bool logAdded = false;
 
   Data(
-      {amount,
-      by,
-      isDonation,
-      particularDesc,
-      particularTitle,
-      time,
-      vchNo,
-      vchType,
-      id});
+      {required this.amount,
+      required this.by,
+      required this.isDonation,
+      required this.particularDesc,
+      required this.particularTitle,
+      required this.time,
+      required this.vchNo,
+      required this.vchType,
+      this.id});
 
   Data.fromJson(Map<String, Object?> json, String id)
       : this(
@@ -42,17 +42,17 @@ class Data {
   /* @TODO: Make sure to update the by with user related stuff once the account related stuff is finished */
   Data.fromLogPage(LogPage page)
       : this(
-            amount: page.cost,
+            amount: page.cost!,
             by: "... Venugopala Iyer",
             isDonation: identical(page.cost, typeOfLogOption.first),
-            particularDesc: page.title,
-            particularTitle: page.category,
+            particularDesc: page.title!,
+            particularTitle: page.category!,
             time: Timestamp.now(),
-            vchNo: page.vchNum,
-            vchType: page.vchType,
+            vchNo: page.vchNum!,
+            vchType: page.vchType!,
             id: null);
 
-  Data.copyWith(
+  Data copyWith(
       {int? amount,
       bool? isDonation,
       String? by,
@@ -62,17 +62,17 @@ class Data {
       int? vchNo,
       String? vchType,
       String? id}) {
-    Data(
+    return Data(
         amount: amount ?? this.amount,
         by: by ?? this.by,
         isDonation: isDonation ?? this.isDonation,
         particularDesc: particularDesc ?? this.particularDesc,
-        particularTitle: particularTitle ?? particularTitle,
+        particularTitle: particularTitle ?? this.particularTitle,
         time: time ?? this.time,
         vchNo: vchNo ?? this.vchNo,
         vchType: vchType ?? this.vchType,
-        id: id ?? this.id);
-  }
+        id: id ?? id);
+      }
 
   Map<String, Object?> toJson() => {
         "amount": amount,

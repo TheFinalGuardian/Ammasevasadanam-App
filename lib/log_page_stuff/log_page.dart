@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:ammasevasadanam_app/firestore/database_service.dart';
 import 'package:ammasevasadanam_app/firestore/log_data.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/amount.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/category.dart';
@@ -22,7 +23,7 @@ class LogPage extends StatefulWidget {
   String? vchType;
   int? vchNum;
   int? cost;
-  late Data data;
+  late Data _data;
 
   LogPage({super.key})
       : edit = false,
@@ -44,7 +45,7 @@ class LogPage extends StatefulWidget {
   late Particulars particulars = Particulars(title: title);
   late Group group = Group(type: category);
   late DropDownMenuTypeOfLog typeOfLog = DropDownMenuTypeOfLog(type: type);
-  late Submit submit = Submit(edit: edit, parent: this);
+  late Submit submitButton = Submit(edit: edit, parent: this);
   late _LogPageState _state;
 
   @override
@@ -75,6 +76,9 @@ class LogPage extends StatefulWidget {
     error = false;
     return true;
   }
+
+  void crData() => _data = Data.fromLogPage(this);
+  void submit() => service.addLog(_data);
 
   void clearValues() {
     amount.clear();
@@ -151,7 +155,7 @@ class _LogPageState extends State<LogPage> {
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 25.0),
-                    child: widget.submit,
+                    child: widget.submitButton,
                   ),
                 ),
                 const Padding(

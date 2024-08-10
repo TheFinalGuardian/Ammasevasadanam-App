@@ -1,7 +1,9 @@
 import 'package:ammasevasadanam_app/firestore/log_data.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-const String LOG_PATH = "logs/mock-logs";
+const String LOG_PATH = "logs/mock-logs/mock";
+
+final DatabaseService service = DatabaseService();
 
 class DatabaseService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -16,7 +18,7 @@ class DatabaseService {
 
   Stream<QuerySnapshot> getLogs() => _logRef.snapshots();
 
-  void addLog(Data data) => _logRef.add(data);
+  void addLog(Data data) async => _logRef.add(data).then((doc) => data.id = doc.id);
 
   Future<Data> getLog(String dataId) async =>
       (await _logRef.doc(dataId).get()).data() as Data;

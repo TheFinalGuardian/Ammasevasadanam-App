@@ -31,6 +31,10 @@ class _SubmitState extends State<Submit> {
               return;
             }
 
+            widget.parent
+              ..crData()
+              ..submit();
+
             create(
                 "2/3/4",
                 "Yogesh",
@@ -40,7 +44,7 @@ class _SubmitState extends State<Submit> {
                 widget.parent.vchTypeUI.getVchType(),
                 widget.parent.vchNumUI.getVchNum(),
                 widget.parent.amount.getAmount());
-            
+
             widget.parent.clearValues();
           },
           child: const Text("Submit"));
