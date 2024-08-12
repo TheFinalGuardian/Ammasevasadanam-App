@@ -95,6 +95,9 @@ class CustomTileState extends State<CustomTile> {
                 staticTrack = widget.numID;
                 Navigator.of(context).push(leftToRight(LogPage.edit(edit: true,type: widget.type, category: widget.group,title: widget.title,vchNum: widget.vchNum,vchType: widget.vchType,cost: widget.cost)));
               },
+              onLongPress: (){
+                remove();
+              },
             ),
           ),
         ),
