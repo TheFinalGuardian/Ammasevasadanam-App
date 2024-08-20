@@ -1,5 +1,5 @@
 import 'package:ammasevasadanam_app/report_page_stuff/download_button.dart';
-import 'package:ammasevasadanam_app/report_page_stuff/monthly_entries.dart';
+import 'package:ammasevasadanam_app/animations/report_animations/entries.dart';
 import 'package:flutter/material.dart';
 
 class ReportPage extends StatelessWidget {
@@ -34,7 +34,7 @@ class ReportPage extends StatelessWidget {
                       child: Padding(
                         padding:
                             EdgeInsets.only(top: 10.0, right: 20.0, left: 20.0),
-                        child: MonthlyEntries(),
+                        child: Entries(),
                       ),
                     )
                   ])

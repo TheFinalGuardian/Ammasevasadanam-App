@@ -2,7 +2,7 @@ import 'package:ammasevasadanam_app/log_page_stuff/drop_down_menu_type_of_log.da
 import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-// @TODO: Add edited on (timestamp) and edited by (string) properties and creation date and transaction date properties (timestamps) to both firebase and the data
+// TODO: Add edited on (timestamp) and edited by (string) properties and creation date and transaction date properties (timestamps) to both firebase and the data
 
 class Data {
   int amount;
@@ -39,7 +39,7 @@ class Data {
             vchType: json["vchType"] as String,
             id: id);
 
-  /* @TODO: Make sure to update the by with user related stuff once the account related stuff is finished */
+  /* TODO: Make sure to update the by with user related stuff once the account related stuff is finished */
   Data.fromLogPage(LogPage page)
       : this(
             amount: page.cost!,
@@ -72,7 +72,7 @@ class Data {
         vchNo: vchNo ?? this.vchNo,
         vchType: vchType ?? this.vchType,
         id: id ?? id);
-      }
+  }
 
   Map<String, Object?> toJson() => {
         "amount": amount,

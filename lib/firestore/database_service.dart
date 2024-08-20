@@ -18,7 +18,8 @@ class DatabaseService {
 
   Stream<QuerySnapshot> getLogs() => _logRef.snapshots();
 
-  void addLog(Data data) async => _logRef.add(data).then((doc) => data.id = doc.id);
+  void addLog(Data data) async =>
+      _logRef.add(data).then((doc) => data.id = doc.id);
 
   Future<Data> getLog(String dataId) async =>
       (await _logRef.doc(dataId).get()).data() as Data;
@@ -26,4 +27,7 @@ class DatabaseService {
   void updateLog(Data data) => _logRef.doc(data.id).update(data.toJson());
 
   void removeLog(String dataId) => _logRef.doc(dataId).delete();
+
+  Future<AggregateQuerySnapshot> getCountSnapshot() async =>
+      _logRef.count().get();
 }

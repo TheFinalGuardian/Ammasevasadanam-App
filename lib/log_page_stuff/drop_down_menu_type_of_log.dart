@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// @TODO: convert list to enum
+// TODO: convert list to enum
 const List<String> typeOfLogOption = <String>['Donation', 'Expense'];
 String log = '';
 

@@ -1,6 +1,6 @@
 import 'package:ammasevasadanam_app/animations/transition_animation_folder/left_to_right.dart';
+import 'package:ammasevasadanam_app/firestore/log_data.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
-import 'package:ammasevasadanam_app/report_page_stuff/monthly_entries.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -25,6 +25,18 @@ class CustomTile extends StatefulWidget {
       required this.cost,
       required this.person,
       required this.date});
+
+  CustomTile.fromData(Data data, {Key? key})
+      : this(
+            key: key,
+            date: data.time.toDate().toString(),
+            person: data.by,
+            type: data.isDonation ? "Donation" : "Expense",
+            group: data.particularTitle,
+            title: data.particularDesc,
+            vchType: data.vchType,
+            vchNum: data.vchNo,
+            cost: data.amount);
 
   @override
   State<CustomTile> createState() => _CustomTileState();
@@ -94,17 +106,4 @@ class _CustomTextState extends State<CustomText> {
           fontWeight: FontWeight.bold,
         ));
   }
-}
-
-void create(String date, String person, String type, String group, String title,
-    String vchType, int vchNum, int cost) {
-  entries.add(CustomTile(
-      date: date,
-      person: person,
-      type: type,
-      group: group,
-      title: title,
-      vchType: vchType,
-      vchNum: vchNum,
-      cost: cost));
 }

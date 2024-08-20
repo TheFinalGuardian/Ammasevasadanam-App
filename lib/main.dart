@@ -1,6 +1,6 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:ammasevasadanam_app/firebase_options.dart';
+import 'package:ammasevasadanam_app/firestore/firebase_options.dart';
 import 'package:ammasevasadanam_app/page_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';

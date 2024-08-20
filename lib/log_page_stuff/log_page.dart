@@ -12,7 +12,7 @@ import 'package:ammasevasadanam_app/log_page_stuff/vch_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
-// @TODO: replace foredit constructor with from data taking data object as parameter
+// TODO: replace foredit constructor with from data taking data object as parameter
 
 class LogPage extends StatefulWidget {
   bool edit;

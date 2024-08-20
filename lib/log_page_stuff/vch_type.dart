@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// @TODO: convert list to enum
+// TODO: convert list to enum
 
 const List<String> TYPE = <String>["Payment", "Contra"];
 
