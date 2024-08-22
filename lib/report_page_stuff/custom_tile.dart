@@ -1,6 +1,7 @@
 import 'package:ammasevasadanam_app/animations/transition_animation_folder/left_to_right.dart';
 import 'package:ammasevasadanam_app/firestore/log_data.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -15,6 +16,8 @@ class CustomTile extends StatefulWidget {
   int vchNum;
   int cost;
 
+  Timestamp time;
+
   CustomTile(
       {super.key,
       required this.type,
@@ -24,7 +27,8 @@ class CustomTile extends StatefulWidget {
       required this.vchNum,
       required this.cost,
       required this.person,
-      required this.date});
+      required this.date,
+      required this.time});
 
   CustomTile.fromData(Data data, {Key? key})
       : this(
@@ -36,7 +40,8 @@ class CustomTile extends StatefulWidget {
             title: data.particularDesc,
             vchType: data.vchType,
             vchNum: data.vchNo,
-            cost: data.amount);
+            cost: data.amount,
+            time: data.time);
 
   @override
   State<CustomTile> createState() => _CustomTileState();
