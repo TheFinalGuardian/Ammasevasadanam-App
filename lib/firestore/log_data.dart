@@ -44,13 +44,13 @@ class Data {
       : this(
             amount: page.cost!,
             by: "... Venugopala Iyer",
-            isDonation: identical(page.cost, typeOfLogOption.first),
+            isDonation: identical(page.cost, logTypes.first),
             particularDesc: page.title!,
             particularTitle: page.category!,
             time: Timestamp.now(),
             vchNo: page.vchNum!,
             vchType: page.vchType!,
-            id: null);
+            id: page.id);
 
   Data copyWith(
       {int? amount,

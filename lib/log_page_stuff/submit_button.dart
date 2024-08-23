@@ -16,24 +16,46 @@ class _SubmitState extends State<Submit> {
   @override
   Widget build(BuildContext context) {
     if (widget.edit) {
-      return ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Text("Save"));
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          ElevatedButton(
+              onPressed: () {
+                if (!widget.parent.fillValues()) {
+                  return;
+                }
+
+                widget.parent
+                  ..crData()
+                  ..update()
+                  ..clearValues();
+                
+                Navigator.of(context).pop();
+              },
+              child: const Text("Save")),
+          ElevatedButton(
+              onPressed: () {
+                widget.parent
+                  ..crData()
+                  ..delete()
+                  ..clearValues();
+
+                Navigator.of(context).pop();
+              },
+              child: const Text("Delete")),
+        ],
+      );
     } else {
       return ElevatedButton(
           onPressed: () {
-            bool completed = widget.parent.fillValues();
-            if (!completed) {
+            if (!widget.parent.fillValues()) {
               return;
             }
 
             widget.parent
               ..crData()
-              ..submit();
-
-            widget.parent.clearValues();
+              ..submit()
+              ..clearValues();
           },
           child: const Text("Submit"));
     }

@@ -12,6 +12,8 @@ class _LoaderState extends State<Loader> {
   @override
   Widget build(BuildContext context) {
     // TODO: style the loading animation
-    return const SpinKitDoubleBounce(color: Colors.black,);
+    return const SpinKitDoubleBounce(
+      color: Colors.black,
+    );
   }
 }

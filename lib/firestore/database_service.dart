@@ -24,9 +24,9 @@ class DatabaseService {
   Future<Data> getLog(String dataId) async =>
       (await _logRef.doc(dataId).get()).data() as Data;
 
-  void updateLog(Data data) => _logRef.doc(data.id).update(data.toJson());
+  void updateLog(Data data) async => _logRef.doc(data.id).update(data.toJson());
 
-  void removeLog(String dataId) => _logRef.doc(dataId).delete();
+  void removeLog(String dataId) async => _logRef.doc(dataId).delete();
 
   Future<AggregateQuerySnapshot> getCountSnapshot() async =>
       _logRef.count().get();

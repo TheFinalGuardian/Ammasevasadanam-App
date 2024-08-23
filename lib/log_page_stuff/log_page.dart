@@ -17,17 +17,20 @@ import 'package:flutter/scheduler.dart';
 class LogPage extends StatefulWidget {
   bool edit;
   bool error;
+  bool success;
   String? type;
   String? category;
   String? title;
   String? vchType;
   int? vchNum;
   int? cost;
+  String? id;
   late Data _data;
 
   LogPage({super.key})
       : edit = false,
-        error = false;
+        error = false,
+        success = false;
   LogPage.forEdit(
       {super.key,
       this.type,
@@ -35,16 +38,18 @@ class LogPage extends StatefulWidget {
       this.title,
       this.vchType,
       this.vchNum,
-      this.cost})
+      this.cost,
+      this.id})
       : edit = true,
-        error = false;
+        error = false,
+        success = false;
 
   late Amount amount = Amount(cost: cost);
   late VchNum vchNumUI = VchNum(vchNumber: vchNum);
   late VchType vchTypeUI = VchType(vchType: vchType);
   late Particulars particulars = Particulars(title: title);
   late Group group = Group(type: category);
-  late DropDownMenuTypeOfLog typeOfLog = DropDownMenuTypeOfLog(type: type);
+  late LogType typeOfLog = LogType(type: type);
   late Submit submitButton = Submit(edit: edit, parent: this);
   late _LogPageState _state;
 
@@ -78,7 +83,17 @@ class LogPage extends StatefulWidget {
   }
 
   void crData() => _data = Data.fromLogPage(this);
-  void submit() => service.addLog(_data);
+  void submit() async {
+    service.addLog(_data);
+    _state.success();
+  }
+
+  void update() async {
+    service.updateLog(_data);
+    _state.success();
+  }
+
+  void delete() async => service.removeLog(_data.id!);
 
   void clearValues() {
     amount.clear();
@@ -93,6 +108,10 @@ class _LogPageState extends State<LogPage> {
     if (widget.error) {
       SchedulerBinding.instance
           .scheduleFrameCallback((timestamp) => errorDialog(context));
+    }
+    if (widget.success) {
+      SchedulerBinding.instance
+          .scheduleFrameCallback((timestamp) => successDialog(context));
     }
 
     return Scaffold(
@@ -181,7 +200,23 @@ class _LogPageState extends State<LogPage> {
                 borderRadius: BorderRadius.all(Radius.circular(10.0)))));
   }
 
+  Future<dynamic> successDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (_) => const AlertDialog(
+            title: Text("Success!"),
+            content: Text("Your entry has been successfully resolved."),
+            elevation: 15,
+            backgroundColor: Colors.lightBlue,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)))));
+  }
+
   void error() {
     setState(() => widget.error = true);
+  }
+
+  void success() {
+    setState(() => widget.success = true);
   }
 }

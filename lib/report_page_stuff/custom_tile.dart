@@ -13,6 +13,7 @@ class CustomTile extends StatefulWidget {
   String group;
   String title;
   String vchType;
+  String id;
   int vchNum;
   int cost;
 
@@ -28,7 +29,8 @@ class CustomTile extends StatefulWidget {
       required this.cost,
       required this.person,
       required this.date,
-      required this.time});
+      required this.time,
+      required this.id});
 
   CustomTile.fromData(Data data, {Key? key})
       : this(
@@ -41,7 +43,8 @@ class CustomTile extends StatefulWidget {
             vchType: data.vchType,
             vchNum: data.vchNo,
             cost: data.amount,
-            time: data.time);
+            time: data.time,
+            id: data.id!);
 
   @override
   State<CustomTile> createState() => _CustomTileState();
@@ -87,7 +90,8 @@ class _CustomTileState extends State<CustomTile> {
                 title: widget.title,
                 vchNum: widget.vchNum,
                 vchType: widget.vchType,
-                cost: widget.cost)));
+                cost: widget.cost,
+                id: widget.id)));
           },
         ),
       ),

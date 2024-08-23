@@ -11,9 +11,7 @@ const List<String> typeOfCategory = <String>[
 class Group extends StatefulWidget {
   String? type;
   Group({super.key, this.type});
-  String getCategoryType() {
-    return type ?? typeOfCategory.first;
-  }
+  String getCategoryType() => type ?? typeOfCategory.first;
 
   @override
   State<Group> createState() => _CategoryState();
