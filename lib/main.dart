@@ -1,24 +1,33 @@
-import 'package:ammasevasadanam_app/home_page.dart';
-import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/log_page_place_holder.dart';
-import 'package:ammasevasadanam_app/place_holders/report_page_place_holder.dart';
+// ignore_for_file: must_be_immutable
+
+import 'package:ammasevasadanam_app/firestore/firebase_options.dart';
+import 'package:ammasevasadanam_app/page_view.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const App());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      name: "Ammasevasadanam App",
+      options: DefaultFirebaseOptions.currentPlatform);
+  FirebaseFirestore.instance.settings =
+      const Settings(persistenceEnabled: true);
+  runApp(App());
 }
 
 class App extends StatelessWidget {
-  const App({super.key});
+  App({super.key});
+  PageViewVersion pages3 = PageViewVersion();
+
+  PageViewVersion getUI() {
+    return pages3;
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const HomePage(),
-      routes: {
-        "/log": (context) => const LogPage(),
-        "/home": (context) => const HomePage(),
-        "/report": (context) => const ReportPagePlaceHolder(),
-      },
+      home: pages3,
     );
   }
 }

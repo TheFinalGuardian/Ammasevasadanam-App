@@ -1,8 +1,3 @@
-import 'package:ammasevasadanam_app/home_page.dart';
-import 'package:ammasevasadanam_app/place_holders/log_page_place_holder_folder/log_page_place_holder.dart';
-import 'package:ammasevasadanam_app/place_holders/report_page_place_holder.dart';
-import 'package:ammasevasadanam_app/animations/transition_animation_folder/left_to_right.dart';
-import 'package:ammasevasadanam_app/animations/transition_animation_folder/right_to_left.dart';
 import 'package:flutter/material.dart';
 
 int track = 1;
@@ -37,9 +32,26 @@ class _MenuBottomState extends State<MenuBottom> {
         onTap: (int index) {
           switch (index) {
             case 0:
+              if ((track == 1) || (track == 2)) {}
+              break;
+
+            case 1:
+              if (track == 0) {}
+              if (track == 2) {}
+              break;
+
+            case 2:
+              if ((track == 0) || (track == 1)) {}
+              break;
+          }
+        }
+
+        /*
+        onTap: (int index) {
+          switch (index) {
+            case 0:
               if ((track == 1) || (track == 2)) {
-                Navigator.of(context)
-                    .pushReplacement(leftToRight(const LogPage()));
+                Navigator.of(context).pushReplacement(leftToRight(const LogPageWithAnimation()));
                 setState(() {
                   track = 0;
                 });
@@ -48,15 +60,13 @@ class _MenuBottomState extends State<MenuBottom> {
 
             case 1:
               if (track == 0) {
+                Navigator.of(context).pushReplacement(rightToLeft(const HomePageWithAnimation()));
                 setState(() {
                   track = 1;
                 });
-                Navigator.of(context)
-                    .pushReplacement(rightToLeft(const HomePage()));
               }
               if (track == 2) {
-                Navigator.of(context)
-                    .pushReplacement(leftToRight(const HomePage()));
+                Navigator.of(context).pushReplacement(leftToRight(const HomePageWithAnimation()));
                 setState(() {
                   track = 1;
                 });
@@ -65,14 +75,15 @@ class _MenuBottomState extends State<MenuBottom> {
 
             case 2:
               if ((track == 0) || (track == 1)) {
-                Navigator.of(context).pushReplacement(
-                    rightToLeft(const ReportPagePlaceHolder()));
+                Navigator.of(context).pushReplacement(rightToLeft(const ReportPageWithAnimation()));
                 setState(() {
                   track = 2;
                 });
               }
               break;
           }
-        });
+
+        }*/
+        );
   }
 }
