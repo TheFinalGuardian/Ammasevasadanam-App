@@ -15,26 +15,26 @@ class PageViewVersion extends StatefulWidget {
 
   List<Widget> pages = [LogPage(), const HomePage(), const ReportPage()];
 
-  LogPage getLogPage(){
+  LogPage getLogPage() {
     return logpage;
   }
 
-  HomePage getHomePage(){
+  HomePage getHomePage() {
     return homepage;
   }
 
-  ReportPage getReportPage(){
+  ReportPage getReportPage() {
     return reportpage;
   }
- 
+
   @override
   State<PageViewVersion> createState() => _PageViewVersionState();
 }
+
 int pageChanged = 1;
 PageController pageController = PageController(initialPage: 1);
 
 class _PageViewVersionState extends State<PageViewVersion> {
-
   void changePage(int x) {
     pageController.jumpToPage(x);
     track = x;

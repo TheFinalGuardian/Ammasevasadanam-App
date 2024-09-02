@@ -3,14 +3,16 @@
 import 'package:flutter/material.dart';
 
 class VchNum extends StatefulWidget {
-  String? vchNumber;
+  int? vchNumber;
   VchNum({super.key, this.vchNumber});
 
- String getVchText(){
-    String n = vchControl.text;
-    vchControl.clear();
+  int getVchNum() {
+    int n = int.parse(vchControl.text);
     return n;
   }
+
+  void clear() => vchControl.clear();
+
   @override
   State<VchNum> createState() => _VchNumState();
 }
@@ -20,13 +22,14 @@ TextEditingController vchControl = TextEditingController();
 class _VchNumState extends State<VchNum> {
   @override
   Widget build(BuildContext context) {
-    String initialVCHNum(String? vchNum){
-    if (vchNum != null) {
-        return vchNum;
+    String initialVCHNum(int? vchNum) {
+      if (vchNum != null) {
+        return "$vchNum";
       } else {
         return 'VCH No.';
       }
-  }
+    }
+
     return SizedBox(
       width: 100,
       child: TextField(
@@ -40,4 +43,3 @@ class _VchNumState extends State<VchNum> {
     );
   }
 }
-  

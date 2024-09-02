@@ -6,17 +6,19 @@ class Particulars extends StatefulWidget {
   String? title;
   Particulars({super.key, this.title});
 
-  String getParticularsText(){
+  String getParticularsText() {
     String p = particularsControl.text;
-    particularsControl.clear();
     return p;
   }
+
+  void clear() => particularsControl.clear();
 
   @override
   State<Particulars> createState() => ParticularsState();
 }
 
 TextEditingController particularsControl = TextEditingController();
+
 class ParticularsState extends State<Particulars> {
   @override
   Widget build(BuildContext context) {
@@ -35,12 +37,10 @@ class ParticularsState extends State<Particulars> {
   }
 }
 
-String initialTitle(String? title){
-    if (title != null) {
-        return title;
-      } else {
-        return 'Title';
-      }
+String initialTitle(String? title) {
+  if (title != null) {
+    return title;
+  } else {
+    return 'Title';
   }
-
- 
+}

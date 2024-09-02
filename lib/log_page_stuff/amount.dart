@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class Amount extends StatefulWidget {
-  String? cost;
+  int? cost;
   Amount({super.key, this.cost});
 
-  String getAmountText(){
-    String t = amountControl.text;
-    amountControl.clear();
+  int getAmount() {
+    int t = int.parse(amountControl.text);
     return t;
   }
+
+  void clear() => amountControl.clear();
+
   @override
   State<Amount> createState() => _AmountState();
 }
@@ -24,19 +26,18 @@ class _AmountState extends State<Amount> {
       child: TextField(
         controller: amountControl,
         decoration: InputDecoration(
-        border: const OutlineInputBorder(),
-        labelText: initialAmount(widget.cost),
+          border: const OutlineInputBorder(),
+          labelText: initialAmount(widget.cost),
         ),
       ),
     );
   }
-  String initialAmount(String? cost){
+
+  String initialAmount(int? cost) {
     if (cost != null) {
-        return cost;
-      } else {
-        return 'Amount';
-      }
+      return "$cost";
+    } else {
+      return 'Amount';
+    }
   }
 }
-
-

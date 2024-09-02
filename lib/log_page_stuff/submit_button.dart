@@ -1,12 +1,12 @@
 // ignore_for_file: must_be_immutable
-
-import 'package:ammasevasadanam_app/custom_tile.dart';
+import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
 import 'package:flutter/material.dart';
-import 'package:ammasevasadanam_app/main.dart';
 
 class Submit extends StatefulWidget {
-  bool? edit;
-  Submit({super.key, this.edit});
+  bool edit;
+  LogPage parent;
+
+  Submit({super.key, this.edit = false, required this.parent});
 
   @override
   State<Submit> createState() => _SubmitState();
@@ -15,28 +15,49 @@ class Submit extends StatefulWidget {
 class _SubmitState extends State<Submit> {
   @override
   Widget build(BuildContext context) {
+    if (widget.edit) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          ElevatedButton(
+              onPressed: () {
+                if (!widget.parent.fillValues()) {
+                  return;
+                }
 
-    if(widget.edit != null){
-      return ElevatedButton(
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-      child: const Text("Save"));
-    }else{
-    return ElevatedButton(
-    onPressed: () {
-      create(
-        "2/3/4",
-        "Yogesh",
-        aap.getUI().getLogPage().getThis().getLogType(),
-        aap.getUI().getLogPage().getCategory().getCategoryType(),
-        aap.getUI().getLogPage().getTitleObj().getParticularsText(),
-        aap.getUI().getLogPage().getVCHTypeObj().getVchType(),
-        aap.getUI().getLogPage().getVCHNumObj().getVchText(),
-        aap.getUI().getLogPage().getAmountObj().getAmountText()
+                widget.parent
+                  ..crData()
+                  ..update()
+                  ..clearValues();
+                
+                Navigator.of(context).pop();
+              },
+              child: const Text("Save")),
+          ElevatedButton(
+              onPressed: () {
+                widget.parent
+                  ..crData()
+                  ..delete()
+                  ..clearValues();
+
+                Navigator.of(context).pop();
+              },
+              child: const Text("Delete")),
+        ],
       );
-    }, 
-    child: const Text("Submit"));
+    } else {
+      return ElevatedButton(
+          onPressed: () {
+            if (!widget.parent.fillValues()) {
+              return;
+            }
+
+            widget.parent
+              ..crData()
+              ..submit()
+              ..clearValues();
+          },
+          child: const Text("Submit"));
     }
   }
 }
