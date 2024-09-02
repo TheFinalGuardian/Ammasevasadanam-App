@@ -1,5 +1,50 @@
 import 'package:flutter/material.dart';
 
+class NavBar extends StatelessWidget {
+  const NavBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          UserAccountsDrawerHeader(
+            accountName: Text(''), 
+            accountEmail: Text(''),
+            currentAccountPicture: CircleAvatar(
+              child:ClipOval(
+                child: Image.asset(
+                  'images/generic_profile_picutre.jpg',
+                  width: 90,
+                  height: 90,
+                  fit: BoxFit.cover,
+                )
+              )
+            ),
+            decoration: const BoxDecoration(
+              color: Colors.blue,
+              image: DecorationImage(
+                image: AssetImage(
+                  'images/ammasevasadanam.webp'
+                  ),
+              fit: BoxFit.cover
+              ),
+             ),),
+          /*ListTile(
+            leading: Icon(Icons.home),
+            title: Text('Home'),
+            onTap: () => Navigator.push(
+              context,  MaterialPageRoute(builder: (context) => home_page())
+
+            ),
+          )*/
+        ],
+      ),
+    );
+  }
+}
+
 int track = 1;
 
 class MenuBottom extends StatefulWidget {

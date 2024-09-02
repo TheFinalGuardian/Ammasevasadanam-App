@@ -1,14 +1,23 @@
+import 'package:ammasevasadanam_app/Themes/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:ammasevasadanam_app/animations/swipe_animations/arrow_animation.dart';
+import 'package:ammasevasadanam_app/main.dart';
+import 'package:ammasevasadanam_app/nav_bar.dart';
 
 String bullet = "\u2022 ";
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const NavBar(),
       appBar: genAppBar(context),
       body: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
@@ -19,8 +28,7 @@ class HomePage extends StatelessWidget {
               child: Column(
                 children: [
                   genInstructions(context),
-                  genArrowAnims(context),
-                  genPageInstructions(context),
+                  genArrowAnims(context)
                 ],
               ),
             )
@@ -32,10 +40,19 @@ class HomePage extends StatelessWidget {
 
   AppBar genAppBar(BuildContext context) {
     return AppBar(
-      title: const Center(
-        child: Text('Ammasevasadanam'),
-      ),
-    );
+        title: Center(
+          child: Text(
+            'Welcome',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+        ),
+        actions: [
+          Switch(
+              value: themeManager.themeMode == ThemeMode.dark,
+              onChanged: (newValue) {
+                themeManager.toggleTheme(newValue);
+              })
+        ]);
   }
 
   Widget genInstructions(BuildContext context) {
@@ -63,7 +80,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(50),
+            padding: const EdgeInsets.all(50),  
             child: Column(
               children: [
                 Text('SWIPE RIGHT',
@@ -74,50 +91,6 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget genPageInstructions(BuildContext context) {
-    return Column(
-      children: [genLogInstructions(context), genReportInstructions(context)],
-    );
-  }
-
-  Widget genLogInstructions(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Column(children: [
-        Text('Log Page', style: Theme.of(context).textTheme.bodyMedium),
-        Text(
-            '$bullet First, using the dropdown menu, select the type of log (expense or donation).',
-            style: Theme.of(context).textTheme.bodyMedium),
-        Text(
-            '$bullet Then, set a particular or list your own if the required particular is not displayed.',
-            style: Theme.of(context).textTheme.bodyMedium),
-        Text(
-            '$bullet Enter the VCH type using the dropdown menu and then enter the VCH number.',
-            style: Theme.of(context).textTheme.bodyMedium),
-        Text('$bullet Then press the submit button.',
-            style: Theme.of(context).textTheme.bodyMedium)
-      ]),
-    );
-  }
-
-  Widget genReportInstructions(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Column(children: [
-        Text('Report Page', style: Theme.of(context).textTheme.bodyMedium),
-        Text(
-            '$bullet If you would like to download your report, press the download button.',
-            style: Theme.of(context).textTheme.bodyMedium),
-        Text(
-            '$bullet To edit a log, tap one of the logs listed and scroll down to see later logs.',
-            style: Theme.of(context).textTheme.bodyMedium),
-        Text(
-            '$bullet There, you should be able to edit the information using the input bars',
-            style: Theme.of(context).textTheme.bodyMedium)
-      ]),
     );
   }
 }
