@@ -18,10 +18,6 @@ void main() async {
   runApp(App());
 }
 
-App getAAP() {
-  return aap;
-}
-
 ThemeManager themeManager = ThemeManager();
 
 class App extends StatefulWidget {
@@ -56,8 +52,6 @@ class _AppState extends State<App> {
     if (mounted) {
       setState(() {});
     }
-  PageViewVersion getUI() {
-    return pages3;
   }
 
   @override
@@ -72,5 +66,4 @@ class _AppState extends State<App> {
       },
     );
   }
-}
 }
