@@ -39,7 +39,7 @@ class _CategoryState extends State<Group> {
       }).toList(),
     );
   }
-
+  
 String initialSelection(String? type){
   if (widget.type != null) {
         for (int x = 0; x < typeOfCategory.length; x++){
