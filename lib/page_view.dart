@@ -11,9 +11,9 @@ class PageViewVersion extends StatefulWidget {
 
   LogPage logpage = LogPage();
   HomePage homepage = const HomePage();
-  ReportPage reportpage = const ReportPage();
+  ReportPage reportpage =  const ReportPage();
 
-  List<Widget> pages = [LogPage(), const HomePage(), const ReportPage()];
+  List<Widget> pages = [LogPage(), const HomePage(),  const ReportPage()];
 
   LogPage getLogPage() {
     return logpage;

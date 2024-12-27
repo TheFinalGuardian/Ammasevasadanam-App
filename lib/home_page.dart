@@ -1,8 +1,8 @@
-import 'package:ammasevasadanam_app/Themes/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:ammasevasadanam_app/animations/swipe_animations/arrow_animation.dart';
 import 'package:ammasevasadanam_app/main.dart';
 import 'package:ammasevasadanam_app/nav_bar.dart';
+
 
 String bullet = "\u2022 ";
 
@@ -26,10 +26,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
-                children: [
-                  genInstructions(context),
-                  genArrowAnims(context)
-                ],
+                children: [genInstructions(context), genArrowAnims(context)],
               ),
             )
           ],
@@ -80,7 +77,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(50),  
+            padding: const EdgeInsets.all(50),
             child: Column(
               children: [
                 Text('SWIPE RIGHT',
