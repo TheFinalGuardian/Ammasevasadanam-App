@@ -14,6 +14,8 @@ import 'package:flutter/scheduler.dart';
 
 // TODO: replace foredit constructor with from data taking data object as parameter
 
+String bullet = "\u2022 ";
+
 class LogPage extends StatefulWidget {
   bool edit;
   bool error;
@@ -103,6 +105,9 @@ class LogPage extends StatefulWidget {
 }
 
 class _LogPageState extends State<LogPage> {
+  String dropdownValue = "one";
+  final _items = ['Expenses', 'Donation'];
+
   @override
   Widget build(BuildContext context) {
     if (widget.error) {
@@ -115,76 +120,66 @@ class _LogPageState extends State<LogPage> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Log Page'),
-      ),
-      body: SingleChildScrollView(
-          physics: const ClampingScrollPhysics(),
-          child: Stack(children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    const SizedBox(width: 20),
-                    const Text("Select Type of Log: "),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    widget.typeOfLog,
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, top: 10.0),
-                  child: widget.group,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, top: 10.0),
-                  child: widget.particulars,
-                ),
-                Row(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                      child: Text("VCH Type: "),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0, top: 10.0),
-                      child: widget.vchTypeUI,
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 48.0, top: 10.0),
-                  child: widget.vchNumUI,
-                ),
-                Row(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                      child: Text("₹"),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0, top: 10.0),
-                      child: widget.amount,
-                    ),
-                  ],
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 25.0),
-                    child: widget.submitButton,
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 20.0, top: 10.0),
-                  child: Text("Edit Added Entries:"),
-                ),
-              ],
+        appBar: AppBar(
+          title: const Text('Log Page'),
+          actions: [
+            IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          title: const Text("Log Page Information"),
+                          content: Column(children: [
+                            Text('Log Page',
+                                style: Theme.of(context).textTheme.bodyMedium),
+                            Text(
+                                '$bullet First, using the dropdown menu, select the type of log (expense or donation).',
+                                style: Theme.of(context).textTheme.bodyMedium),
+                            Text(
+                                '$bullet Then, set a particular or list your own if the required particular is not displayed.',
+                                style: Theme.of(context).textTheme.bodyMedium),
+                            Text(
+                                '$bullet Enter the VCH type using the dropdown menu and then enter the VCH number.',
+                                style: Theme.of(context).textTheme.bodyMedium),
+                            Text('$bullet Then press the submit button.',
+                                style: Theme.of(context).textTheme.bodyMedium)
+                          ]),
+                          actions: [
+                            TextButton(
+                                child: const Text("Ok, got it."),
+                                onPressed: () => Navigator.pop(context))
+                          ],
+                        ));
+              },
+              icon: Image.asset('images/info_button.png'),
+            )
+          ],
+        ),
+        body: Column(
+          children: [
+            Container(
+              width: 400,
+              height: 80,
+              decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 161, 196, 255),
+                  borderRadius: BorderRadius.circular(10)),
             ),
-          ])),
-    );
+            DropdownButton(
+              items: _items.map((String item) {
+                return DropdownMenuItem(value: item, child: Text(item));
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  dropdownValue = newValue!;
+                });
+              },
+              value: dropdownValue,
+            )
+          ],
+        ));
   }
 
   Future<dynamic> errorDialog(BuildContext context) {

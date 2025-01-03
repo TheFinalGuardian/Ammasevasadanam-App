@@ -2,7 +2,7 @@
 
 import 'package:ammasevasadanam_app/home_page.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
-import 'package:ammasevasadanam_app/menu_bottom.dart';
+import 'package:ammasevasadanam_app/nav_bar_stuff/nav_bar.dart';
 import 'package:ammasevasadanam_app/report_page_stuff/report_page.dart';
 import 'package:flutter/material.dart';
 
@@ -11,9 +11,9 @@ class PageViewVersion extends StatefulWidget {
 
   LogPage logpage = LogPage();
   HomePage homepage = const HomePage();
-  ReportPage reportpage = const ReportPage();
+  ReportPage reportpage =  const ReportPage();
 
-  List<Widget> pages = [LogPage(), const HomePage(), const ReportPage()];
+  List<Widget> pages = [LogPage(), const HomePage(),  const ReportPage()];
 
   LogPage getLogPage() {
     return logpage;
