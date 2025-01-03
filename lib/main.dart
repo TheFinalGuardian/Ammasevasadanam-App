@@ -3,6 +3,7 @@
 import 'package:ammasevasadanam_app/firestore/firebase_options.dart';
 import 'package:ammasevasadanam_app/Themes/theme_constants.dart';
 import 'package:ammasevasadanam_app/Themes/theme_manager.dart';
+import 'package:ammasevasadanam_app/nav_bar_stuff/sidebar_layout.dart';
 import 'package:ammasevasadanam_app/page_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -18,7 +19,7 @@ void main() async {
   runApp(App());
 }
 
-ThemeManager themeManager = ThemeManager();
+ThemeManager themeManager = ThemeManager() ;
 
 class App extends StatefulWidget {
   late _AppState _state;
