@@ -2,11 +2,12 @@
 
 import 'package:ammasevasadanam_app/firestore/firebase_options.dart';
 import 'package:ammasevasadanam_app/page_view.dart';
+import 'package:ammasevasadanam_app/widget_tree.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
       name: "Ammasevasadanam App",
@@ -18,16 +19,11 @@ void main() async {
 
 class App extends StatelessWidget {
   App({super.key});
-  PageViewVersion pages3 = PageViewVersion();
-
-  PageViewVersion getUI() {
-    return pages3;
-  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: pages3,
+      home: WidgetTree(),
     );
   }
 }

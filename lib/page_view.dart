@@ -10,10 +10,10 @@ class PageViewVersion extends StatefulWidget {
   PageViewVersion({super.key});
 
   LogPage logpage = LogPage();
-  HomePage homepage = const HomePage();
+  HomePage homepage =  HomePage();
   ReportPage reportpage = const ReportPage();
 
-  List<Widget> pages = [LogPage(), const HomePage(), const ReportPage()];
+  List<Widget> pages = [LogPage(),  HomePage(), const ReportPage()];
 
   LogPage getLogPage() {
     return logpage;

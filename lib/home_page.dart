@@ -1,10 +1,17 @@
+import 'package:ammasevasadanam_app/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ammasevasadanam_app/animations/swipe_animations/arrow_animation.dart';
 
 String bullet = "\u2022 ";
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+  final User? user = Auth().currentUser;
+
+  Future<void> signOut() async{
+    await Auth().signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +25,11 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
+                  userID(context),
                   genInstructions(context),
                   genArrowAnims(context),
                   genPageInstructions(context),
+                  signOutButton(context)
                 ],
               ),
             )
@@ -28,6 +37,17 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  ElevatedButton signOutButton (BuildContext context){
+    return ElevatedButton(
+      onPressed: signOut,
+    child: Text('Elevated Button')
+    );
+  }
+
+  Text userID (BuildContext context){
+    return Text(user?.email ?? 'User email');
   }
 
   AppBar genAppBar(BuildContext context) {
