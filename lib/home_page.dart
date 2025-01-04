@@ -1,7 +1,7 @@
+import 'package:ammasevasadanam_app/animations/swipe_animations/arrow_animation.dart';
 import 'package:ammasevasadanam_app/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:ammasevasadanam_app/animations/swipe_animations/arrow_animation.dart';
 
 String bullet = "\u2022 ";
 
@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
   final User? user = Auth().currentUser;
 
-  Future<void> signOut() async{
+  Future<void> signOut() async {
     await Auth().signOut();
   }
 
@@ -39,14 +39,12 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  ElevatedButton signOutButton (BuildContext context){
+  ElevatedButton signOutButton(BuildContext context) {
     return ElevatedButton(
-      onPressed: signOut,
-    child: Text('Elevated Button')
-    );
+        onPressed: signOut, child: const Text('Elevated Button'));
   }
 
-  Text userID (BuildContext context){
+  Text userID(BuildContext context) {
     return Text(user?.email ?? 'User email');
   }
 

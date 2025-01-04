@@ -1,7 +1,6 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:ammasevasadanam_app/firestore/firebase_options.dart';
-import 'package:ammasevasadanam_app/page_view.dart';
 import 'package:ammasevasadanam_app/widget_tree.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,15 +13,15 @@ Future<void> main() async {
       options: DefaultFirebaseOptions.currentPlatform);
   FirebaseFirestore.instance.settings =
       const Settings(persistenceEnabled: true);
-  runApp(App());
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
-  App({super.key});
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: WidgetTree(),
     );
   }
