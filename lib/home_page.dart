@@ -1,4 +1,5 @@
 import 'package:ammasevasadanam_app/auth.dart';
+import 'package:ammasevasadanam_app/widget_tree.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ammasevasadanam_app/animations/swipe_animations/arrow_animation.dart';
@@ -27,7 +28,6 @@ class HomePage extends StatelessWidget {
                 children: [
                   userID(context),
                   genInstructions(context),
-                  genArrowAnims(context),
                   genPageInstructions(context),
                   signOutButton(context)
                 ],
@@ -42,12 +42,12 @@ class HomePage extends StatelessWidget {
   ElevatedButton signOutButton (BuildContext context){
     return ElevatedButton(
       onPressed: signOut,
-    child: Text('Elevated Button')
+    child: const Text('Sign Out')
     );
   }
 
   Text userID (BuildContext context){
-    return Text(user?.email ?? 'User email');
+    return Text(userRole!);
   }
 
   AppBar genAppBar(BuildContext context) {

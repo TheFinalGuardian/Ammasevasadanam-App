@@ -7,7 +7,7 @@ import 'package:ammasevasadanam_app/report_page_stuff/report_page.dart';
 import 'package:flutter/material.dart';
 
 class PageViewVersion extends StatefulWidget {
-  PageViewVersion({super.key});
+  PageViewVersion({super.key, String? userName});
 
   LogPage logpage = LogPage();
   HomePage homepage =  HomePage();
@@ -35,9 +35,11 @@ int pageChanged = 1;
 PageController pageController = PageController(initialPage: 1);
 
 class _PageViewVersionState extends State<PageViewVersion> {
+  
+
   void changePage(int x) {
-    pageController.jumpToPage(x);
-    track = x;
+      pageController.jumpToPage(x);
+      track = x;
   }
 
   @override

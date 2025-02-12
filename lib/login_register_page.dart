@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../auth.dart';
-
+import 'dart:async';
 class LoginRegisterPage extends StatefulWidget{
-  const LoginRegisterPage({Key? key}) : super(key: key);
+  const LoginRegisterPage({super.key});
 
   @override
   State<LoginRegisterPage> createState() => _LoginRegisterPageState();
@@ -43,20 +43,33 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
   }
 
   Widget _title(){
-    return const Text('Firebase Auth');
+    return const Text('Ammasevasadanam Administration App');
   }
 
-  Widget _entryField(
-   String title,
+  Widget _usernameField(
     TextEditingController controller,
     ) {
       return TextField(
         controller: controller,
-        decoration: InputDecoration(
-          labelText: title,
+        obscureText: false,
+        decoration: const InputDecoration(
+          labelText: "Username",
         ),
       );
     }
+
+ Widget _passwordField(
+    TextEditingController controller,
+    ) {
+      return TextField(
+        controller: controller,
+        obscureText: true,
+        decoration: const InputDecoration(
+          labelText: "Password",
+        ),
+      );
+    }
+
 
   Widget _errorMessage(){
     return Text(errorMessage == '' ? '' : 'Humm ? $errorMessage');
@@ -64,19 +77,12 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
 
   Widget _submitButton(){
     return ElevatedButton(
-      onPressed: isLogin ? signInWithEmailAndPassword : createUserWithEmailAndPassword,
-      child: Text(isLogin ? 'Login' : 'Register'),
-    );
-  }
-
-  Widget _loginOrRegisterButton(){
-    return TextButton(
       onPressed: (){
-        setState(() {
-          isLogin = !isLogin;
-        });
+        signInWithEmailAndPassword();
+        fetch();
+        Future.delayed(const Duration(seconds: 10), () {});
       },
-      child: Text(isLogin ? 'Register instead' : 'Login instead'),
+      child: const Text("Login"),
     );
   }
 
@@ -94,11 +100,10 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _entryField('email', _controllerEmail),
-            _entryField('password', _controllerPassword),
+            _usernameField(_controllerEmail),
+            _passwordField(_controllerPassword),
             _errorMessage(),
             _submitButton(),
-            _loginOrRegisterButton(),
           ],
         )
       ),

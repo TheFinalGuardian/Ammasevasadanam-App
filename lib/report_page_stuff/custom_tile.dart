@@ -1,6 +1,11 @@
+
 import 'package:ammasevasadanam_app/animations/transition_animation_folder/left_to_right.dart';
 import 'package:ammasevasadanam_app/firestore/log_data.dart';
+import 'package:ammasevasadanam_app/log_page_stuff/amount.dart';
 import 'package:ammasevasadanam_app/log_page_stuff/log_page.dart';
+import 'package:ammasevasadanam_app/log_page_stuff/particulars.dart';
+import 'package:ammasevasadanam_app/log_page_stuff/vch_num.dart';
+import 'package:ammasevasadanam_app/widget_tree.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -84,7 +89,8 @@ class _CustomTileState extends State<CustomTile> {
           ),
           subtitle: Text("By: ${widget.person}"),
           onTap: () {
-            Navigator.of(context).push(leftToRight(LogPage.forEdit(
+                if(userRole == "admin"){
+                Navigator.of(context).push(leftToRight(LogPage.forEdit(
                 type: widget.type,
                 category: widget.group,
                 title: widget.title,
@@ -92,6 +98,10 @@ class _CustomTileState extends State<CustomTile> {
                 vchType: widget.vchType,
                 cost: widget.cost,
                 id: widget.id)));
+                amountControl.text = widget.cost.toString();
+                particularsControl.text = widget.title;
+                vchControl.text = widget.vchNum.toString();
+                }
           },
         ),
       ),
