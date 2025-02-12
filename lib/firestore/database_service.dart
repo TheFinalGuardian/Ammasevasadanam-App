@@ -1,7 +1,7 @@
 import 'package:ammasevasadanam_app/firestore/log_data.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-const String LOG_PATH = "logs/sample-logs";
+const String LOG_PATH = "logs";
 
 final DatabaseService service = DatabaseService();
 
